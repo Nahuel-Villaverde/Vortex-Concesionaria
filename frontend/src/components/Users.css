@@ -1,0 +1,28 @@
+.users-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.users-table th, .users-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.users-table th {
+  background-color: #000000;
+  text-align: left;
+}
+
+.users-table tr:nth-child(even) {
+  background-color: transparent;
+}
+
+.users-table tr:hover {
+  background-color: #3e3e3e;
+}
