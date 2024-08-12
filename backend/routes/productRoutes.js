@@ -1,13 +1,14 @@
+// routes/productRoutes.js
 import { Router } from 'express';
 import { getProducts, getProductById, createProduct, updateProduct, deleteProduct } from '../controllers/product.controller.js';
-import { isAdmin } from '../middleware/auth.js'; // Asegúrate de tener el middleware correctamente importado
+import { isAuthenticated } from '../middleware/auth.js';
 
 const router = Router();
 
-router.get('/', getProducts);
-router.get('/:id', getProductById);
-router.post('/', createProduct);
-router.put('/:id', updateProduct);
-router.delete('/:id', isAdmin, deleteProduct); // Asegúrate de que solo los admin puedan eliminar productos
+router.get('/', isAuthenticated, getProducts);
+router.get('/:id', isAuthenticated, getProductById);
+router.post('/', isAuthenticated, createProduct);
+router.put('/:id', isAuthenticated, updateProduct);
+router.delete('/:id', isAuthenticated, deleteProduct);
 
 export default router;
