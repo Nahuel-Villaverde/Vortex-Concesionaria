@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,6 +20,10 @@ const Login = () => {
         }
     };
 
+    const handleGoogleLogin = () => {
+        window.location.href = '/api/sessions/google';
+    };
+
     return (
         <div>
             <h2>Iniciar Sesión</h2>
@@ -32,6 +36,8 @@ const Login = () => {
             </form>
             {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
             <a href="/register">Registrarse</a>
+            <hr />
+            <button onClick={handleGoogleLogin}>Iniciar sesión con Google</button>
         </div>
     );
 };

@@ -1,4 +1,5 @@
 import passport from 'passport';
+import GoogleStrategy from 'passport-google-oauth20';
 import local from 'passport-local';
 import userService from '../models/user.js';
 import { createHash, isValidPassword } from '../utils.js';
@@ -35,6 +36,33 @@ const initializePassport = () => {
             }
         }
     ));
+
+    passport.use('google', new GoogleStrategy({
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: "http://localhost:8080/api/sessions/google/callback"
+    }, async (token, tokenSecret, profile, done) => {
+        try {
+            console.log(profile);
+            let user = await userService.findOne({ email: profile.emails[0].value });
+            if (!user) {
+                let newUser = {
+                    first_name: profile.name.givenName,
+                    last_name: profile.name.familyName,
+                    email: profile.emails[0].value,
+                    password: "",
+                    role: 'user' 
+                };
+                let result = await userService.create(newUser);
+
+                done(null, result);
+            } else {
+                done(null, user);
+            }
+        } catch (error) {
+            return done(error);
+        }
+    }));
 
     passport.serializeUser((user, done) => {
         done(null, user._id);
