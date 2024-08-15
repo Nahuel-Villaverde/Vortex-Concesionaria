@@ -57,7 +57,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/sessions', sessionsRouter);
-app.use('/api/products', isAuthenticated, productRoutes);
+app.use('/api/products', productRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

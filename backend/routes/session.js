@@ -20,4 +20,12 @@ router.get("/google/callback", passport.authenticate("google", { failureRedirect
     res.redirect("http://localhost:5173/products");
 });
 
+router.get('/current_user', (req, res) => {
+    if (req.isAuthenticated()) {
+        res.send(req.user);
+    } else {
+        res.status(401).send({ error: 'Usuario no autenticado' });
+    }
+});
+
 export default router;
