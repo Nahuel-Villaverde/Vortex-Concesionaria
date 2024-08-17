@@ -9,6 +9,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import productRoutes from './routes/productRoutes.js';
 import sessionsRouter from './routes/session.js';
+import productViewsRouter from './routes/views/product.views.router.js';
 import { fileURLToPath } from 'url';
 
 dotenv.config();
@@ -58,6 +59,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/sessions', sessionsRouter);
 app.use('/api/products', productRoutes);
+app.use('/', productViewsRouter);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

@@ -4,6 +4,7 @@ import Register from './pages/Register';
 import Products from './pages/Products';
 import CreateProduct from './pages/CreateProduct';
 import EditProduct from './pages/EditProduct';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
     return (
@@ -13,8 +14,11 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/products" element={<Products />} />
-                <Route path="/products/create" element={<CreateProduct />} />
-                <Route path="/products/:id/edit" element={<EditProduct />} />
+
+                <Route element={<ProtectedRoute requiredRole="admin"/>}>
+                    <Route path="/products/create" element={<CreateProduct />} />
+                    <Route path="/products/:id/edit" element={<EditProduct />} />
+                </Route>
             </Routes>
         </Router>
     );
