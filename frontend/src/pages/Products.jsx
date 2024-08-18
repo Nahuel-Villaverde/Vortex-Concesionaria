@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './Products.css'; // Importa el archivo CSS
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -11,11 +12,8 @@ const ProductList = () => {
   useEffect(() => {
     const fetchUserAndProducts = async () => {
       try {
-        // Obtener la información del usuario autenticado
         const userResponse = await axios.get('/api/sessions/current_user');
         setUser(userResponse.data);
-
-        // Obtener la lista de productos
         const productsResponse = await axios.get('/api/products');
         setProducts(productsResponse.data.payload);
       } catch (error) {
@@ -61,6 +59,10 @@ const ProductList = () => {
     }
   };
 
+  const handleProductClick = (id) => {
+    navigate(`/products/${id}`); // Navega a la página de detalles del producto
+  };
+
   if (error) {
     return <div>{error}</div>;
   }
@@ -78,27 +80,27 @@ const ProductList = () => {
         </div>
       )}
       {products.length > 0 ? (
-        <ul>
+        <div className="product-list">
           {products.map((product) => (
-            <li key={product._id}>
-              <h2>{product.titulo}</h2>
-              <p>{product.descripcion}</p>
-              <p>Precio: ${product.precio}</p>
-              <p>Categoria: {product.categoria}</p>
-              <img src={product.thumbnail} alt={product.titulo} style={{ width: '100px' }} />
+            <div className="product-item" key={product._id}>
+              <h2 className="product-title" onClick={() => handleProductClick(product._id)}>{product.titulo}</h2>
+              <p className="product-details">Descripción: {product.descripcion}</p>
+              <p className="product-details">Precio: ${product.precio}</p>
+              <p className="product-details">Categoría: {product.categoria}</p>
+              <img src={product.thumbnail} alt={product.titulo} className="product-image" />
               {user.role === 'admin' && (
-                <div>
+                <div className="product-actions">
                   <button onClick={() => handleEditProduct(product._id)}>Modificar</button>
                   <button onClick={() => handleDeleteProduct(product._id)}>Eliminar</button>
                 </div>
               )}
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <p>No hay productos disponibles.</p>
       )}
-      <button onClick={handleLogout}>Cerrar Sesión</button>
+      <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>
     </div>
   );
 };
