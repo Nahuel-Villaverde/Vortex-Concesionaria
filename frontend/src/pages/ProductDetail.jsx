@@ -5,8 +5,6 @@ import axios from 'axios';
 const ProductDetail = () => {
     const { id } = useParams(); // Obtén el ID del producto desde la URL
 
-    console.log('Product ID:', id);
-
     const [product, setProduct] = useState(null);
 
     useEffect(() => {
