@@ -63,6 +63,14 @@ const ProductList = () => {
     navigate(`/products/${id}`); // Navega a la página de detalles del producto
   };
 
+  const handleViewCart = () => {
+    if (user && user.cartId) {
+      navigate(`/carts/${user.cartId}`);
+    } else {
+      console.error('No se encontró el carrito del usuario.');
+    }
+  };
+
   if (error) {
     return <div>{error}</div>;
   }
@@ -101,6 +109,9 @@ const ProductList = () => {
         <p>No hay productos disponibles.</p>
       )}
       <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>
+      {user.role === 'user' && (
+        <button className="view-cart-button" onClick={handleViewCart}>Ver Carrito</button>
+      )}
     </div>
   );
 };

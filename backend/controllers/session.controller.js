@@ -1,5 +1,6 @@
 import passport from 'passport';
 import User from '../models/user.js';
+import cartModel from '../models/cart.model.js';
 
 export const register = async (req, res, next) => {
     passport.authenticate('register', { failureRedirect: 'failregister' }, async (err, user, info) => {
@@ -11,6 +12,9 @@ export const register = async (req, res, next) => {
         }
 
         try {
+            const newCart = await cartModel.create({ products: [] });
+            user.cartId = newCart._id;
+            await user.save();
             req.login(user, (err) => {
                 if (err) {
                     return next(err);
@@ -18,8 +22,8 @@ export const register = async (req, res, next) => {
                 return res.redirect('/login');
             });
         } catch (error) {
-            console.error('Error al registrar ususario', error);
-            res.status(500).send({ status: "error", error: "Error al registrar ususario" });
+            console.error('Error al crear el carrito para el usuario:', error);
+            res.status(500).send({ status: "error", error: "Error al crear el carrito para el usuario" });
         }
     })(req, res, next);
 };
