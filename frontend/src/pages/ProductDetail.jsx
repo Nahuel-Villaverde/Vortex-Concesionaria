@@ -33,7 +33,6 @@ const ProductDetail = () => {
             <p>Categoría: {product.categoria || 'No disponible'}</p>
             <p>Stock: {product.stock ? product.stock : 'No disponible'}</p>
             <p>Código: {product.code || 'No disponible'}</p>
-            <p>Disponible: {product.disponible ? 'Sí' : 'No'}</p>
             <img src={product.thumbnail} alt={product.titulo} style={{ width: '200px' }} />
         </div>
     );

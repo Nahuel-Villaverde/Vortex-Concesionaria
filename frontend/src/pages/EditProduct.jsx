@@ -32,8 +32,7 @@ const EditProduct = () => {
       thumbnail: event.target.thumbnail.value,
       categoria: event.target.categoria.value,
       code: event.target.code.value,
-      stock: event.target.stock.value,
-      disponible: event.target.disponible.checked,
+      stock: event.target.stock.value
     };
 
     try {
@@ -77,8 +76,6 @@ const EditProduct = () => {
         <input type="text" id="code" name="code" defaultValue={product.code} required />
         <label htmlFor="stock">Stock:</label>
         <input type="number" id="stock" name="stock" defaultValue={product.stock} required />
-        <label htmlFor="disponible">Disponible:</label>
-        <input type="checkbox" id="disponible" name="disponible" defaultChecked={product.disponible} />
         <button type="submit">Guardar Cambios</button>
       </form>
     </div>

@@ -1,29 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import './Products.css'; // Importa el archivo CSS
+import { useNavigate, useLocation } from 'react-router-dom';
+import './Products.css';
 
 const ProductList = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
   const [products, setProducts] = useState([]);
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const [page, setPage] = useState(parseInt(searchParams.get('page')) || 1);
+  const [limit, setLimit] = useState(parseInt(searchParams.get('limit')) || 10);
+  const [categoria, setCategoria] = useState(searchParams.get('categoria') || '');
+  const [sort, setSort] = useState(searchParams.get('sort') || '');
+  const [prevLink, setPrevLink] = useState(null);
+  const [nextLink, setNextLink] = useState(null);
 
   useEffect(() => {
     const fetchUserAndProducts = async () => {
       try {
         const userResponse = await axios.get('/api/sessions/current_user');
         setUser(userResponse.data);
-        const productsResponse = await axios.get('/api/products');
+
+        const productsResponse = await axios.get(`/api/products?page=${page}&limit=${limit}&categoria=${categoria}&sort=${sort}`);
         setProducts(productsResponse.data.payload);
+        setPrevLink(productsResponse.data.prevLink);
+        setNextLink(productsResponse.data.nextLink);
       } catch (error) {
         console.error('Error:', error);
-        navigate('/login');
+        setError('Error al cargar los productos');
       }
     };
 
     fetchUserAndProducts();
-  }, [navigate]);
+  }, [page, limit, categoria, sort]);
 
   const handleLogout = async () => {
     try {
@@ -60,7 +72,7 @@ const ProductList = () => {
   };
 
   const handleProductClick = (id) => {
-    navigate(`/products/${id}`); // Navega a la página de detalles del producto
+    navigate(`/products/${id}`);
   };
 
   const handleViewCart = () => {
@@ -71,12 +83,47 @@ const ProductList = () => {
     }
   };
 
+  const handlePageChange = (link) => {
+    const urlParams = new URLSearchParams(link.split('?')[1]);
+    const newPage = urlParams.get('page');
+    const newLimit = urlParams.get('limit') || limit;
+    const newCategoria = urlParams.get('categoria') || '';
+    const newSort = urlParams.get('sort') || '';
+
+    setPage(Number(newPage));
+    setLimit(Number(newLimit));
+    setCategoria(newCategoria);
+    setSort(newSort);
+
+    navigate(`/products?page=${newPage}&limit=${newLimit}&categoria=${newCategoria}&sort=${newSort}`);
+  };
+
+  const handleLimitChange = (event) => {
+    const newLimit = event.target.value;
+    setLimit(Number(newLimit));
+    setPage(1);
+
+    navigate(`/products?page=1&limit=${newLimit}&categoria=${categoria}&sort=${sort}`);
+  };
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'categoria') {
+      setCategoria(value);
+    } else if (name === 'sort') {
+      setSort(value);
+    }
+    setPage(1); // Reinicia la página al cambiar el filtro
+
+    navigate(`/products?page=1&limit=${limit}&categoria=${categoria}&sort=${sort}`);
+  };
+
   if (error) {
     return <div>{error}</div>;
   }
 
   if (!user) {
-    return <div>Cargando...</div>; // O muestra un indicador de carga
+    return <div>Cargando...</div>;
   }
 
   return (
@@ -87,31 +134,57 @@ const ProductList = () => {
           <button onClick={handleAddProduct}>Agregar Producto</button>
         </div>
       )}
+      <div>
+    <label htmlFor="categoria">Categoría: </label>
+    <select id="categoria" name="categoria" value={categoria} onChange={handleFilterChange}>
+        <option value="">Todas</option>
+        <option value="zapatillas">Zapatillas</option>
+        <option value="remeras">Remeras</option>
+        <option value="camperas">Camperas</option>
+        <option value="pantalones">Pantalones</option>
+        <option value="gorras">Gorras</option>
+        <option value="conjuntos">Conjuntos</option>
+    </select>
+</div>
+      <div>
+        <label htmlFor="sort">Ordenar por: </label>
+        <select id="sort" name="sort" value={sort} onChange={handleFilterChange}>
+          <option value="">Ninguno</option>
+          <option value="asc">Ascendente</option>
+          <option value="desc">Descendente</option>
+        </select>
+      </div>
+      
       {products.length > 0 ? (
-        <div className="product-list">
-          {products.map((product) => (
-            <div className="product-item" key={product._id}>
-              <h2 className="product-title" onClick={() => handleProductClick(product._id)}>{product.titulo}</h2>
-              <p className="product-details">Descripción: {product.descripcion}</p>
-              <p className="product-details">Precio: ${product.precio}</p>
-              <p className="product-details">Categoría: {product.categoria}</p>
-              <img src={product.thumbnail} alt={product.titulo} className="product-image" />
-              {user.role === 'admin' && (
-                <div className="product-actions">
-                  <button onClick={() => handleEditProduct(product._id)}>Modificar</button>
-                  <button onClick={() => handleDeleteProduct(product._id)}>Eliminar</button>
+                <div className="product-list">
+                    {products.map((product) => (
+                        <div className="product-item" key={product._id}>
+                            <h2 className="product-title" onClick={() => handleProductClick(product._id)}>{product.titulo}</h2>
+                            <p className="product-details">Descripción: {product.descripcion}</p>
+                            <p className="product-details">Precio: ${product.precio}</p>
+                            <p className="product-details">Categoría: {product.categoria}</p>
+                            <img src={product.thumbnail} alt={product.titulo} className="product-image" />
+                            {user.role === 'admin' && (
+                                <div className="product-actions">
+                                    <button onClick={() => handleEditProduct(product._id)}>Modificar</button>
+                                    <button onClick={() => handleDeleteProduct(product._id)}>Eliminar</button>
+                                </div>
+                            )}
+                        </div>
+                    ))}
                 </div>
-              )}
+            ) : (
+                <p>No hay productos disponibles.</p>
+            )}
+            <div className="pagination">
+                {prevLink && <button onClick={() => handlePageChange(prevLink)}>&lt;&lt; Anterior</button>}
+                <span>Página: {page}</span>
+                {nextLink && <button onClick={() => handlePageChange(nextLink)}>Siguiente &gt;&gt;</button>}
             </div>
-          ))}
-        </div>
-      ) : (
-        <p>No hay productos disponibles.</p>
-      )}
-      <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>
-      {user.role === 'user' && (
-        <button className="view-cart-button" onClick={handleViewCart}>Ver Carrito</button>
-      )}
+            <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>
+            {user.role === 'user' && (
+                <button className="view-cart-button" onClick={handleViewCart}>Ver Carrito</button>
+            )}
     </div>
   );
 };

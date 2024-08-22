@@ -10,8 +10,7 @@ const CreateProduct = () => {
     thumbnail: '',
     categoria: '',
     code: '',
-    stock: '',
-    disponible: false
+    stock: ''
   });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -107,14 +106,6 @@ const CreateProduct = () => {
           value={formData.stock}
           onChange={handleChange}
           required
-        />
-        <label htmlFor="disponible">Disponible:</label>
-        <input
-          type="checkbox"
-          id="disponible"
-          name="disponible"
-          checked={formData.disponible}
-          onChange={handleChange}
         />
         <button type="submit">Agregar Producto</button>
       </form>

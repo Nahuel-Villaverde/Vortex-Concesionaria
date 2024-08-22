@@ -5,15 +5,11 @@ export const getProducts = async (req, res) => {
     let limit = parseInt(req.query.limit) || 10;
     let categoria = req.query.categoria;
     let sort = req.query.sort;
-    let disponible = req.query.disponible;
 
     try {
         let filtro = {};
         if (categoria) {
             filtro.categoria = categoria;
-        }
-        if (disponible !== undefined) {
-            filtro.disponible = disponible === 'true';
         }
 
         let ordenamiento = {};
@@ -25,8 +21,10 @@ export const getProducts = async (req, res) => {
 
         const result = await ProductRepository.getProducts(filtro, { page, limit, lean: true, sort: ordenamiento });
 
-        const prevLink = result.hasPrevPage ? `/api/products?page=${result.prevPage}&limit=${limit}&categoria=${categoria || ''}&sort=${sort || ''}${disponible !== undefined ? `&disponible=${disponible}` : ''}` : null;
-        const nextLink = result.hasNextPage ? `/api/products?page=${result.nextPage}&limit=${limit}&categoria=${categoria || ''}&sort=${sort || ''}${disponible !== undefined ? `&disponible=${disponible}` : ''}` : null;
+        console.log('Resultado de paginación:', result);
+        
+        const prevLink = result.hasPrevPage ? `/api/products?page=${result.prevPage}&limit=${limit}&categoria=${categoria || ''}&sort=${sort || ''}` : null;
+        const nextLink = result.hasNextPage ? `/api/products?page=${result.nextPage}&limit=${limit}&categoria=${categoria || ''}&sort=${sort || ''}` : null;
 
         res.json({
             status: 'success',
@@ -63,20 +61,21 @@ export const getProductById = async (req, res) => {
 };
 
 export const createProduct = async (req, res) => {
-    let { titulo, descripcion, precio, thumbnail, categoria, code, stock, disponible } = req.body;
+    let { titulo, descripcion, precio, thumbnail, categoria, code, stock } = req.body;
 
-    if (!titulo || !descripcion || !precio || !thumbnail || !categoria || !code || stock === undefined || disponible === undefined) {
+    if (!titulo || !descripcion || !precio || !thumbnail || !categoria || !code || stock === undefined) {
         return res.send({ status: "error", error: "Faltan parametros" });
     }
 
     try {
-        let result = await ProductRepository.createProduct({ titulo, descripcion, precio, thumbnail, categoria, code, stock, disponible });
+        let result = await ProductRepository.createProduct({ titulo, descripcion, precio, thumbnail, categoria, code, stock });
         res.send({ status: "success", payload: result });
     } catch (error) {
         console.error('Error al crear producto:', error);
         res.status(500).send({ status: "error", error: "Error al crear producto" });
     }
 };
+
 
 export const updateProduct = async (req, res) => {
     const productId = req.params.id;
