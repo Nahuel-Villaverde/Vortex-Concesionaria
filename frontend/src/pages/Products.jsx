@@ -118,6 +118,25 @@ const ProductList = () => {
     navigate(`/products?page=1&limit=${limit}&categoria=${categoria}&sort=${sort}`);
   };
 
+  const handleProfileClick = () => {
+    navigate('/profile');
+  };
+
+  const handleAddToCart = async (productId) => {
+    try {
+      const cartId = user.cartId;
+      const response = await axios.post(`/api/carts/${cartId}/products/${productId}`);
+      if (response.status === 200) {
+        alert('Producto agregado al carrito con éxito');
+      } else {
+        alert('Error al agregar el producto al carrito');
+      }
+    } catch (error) {
+      console.error('Error al agregar el producto al carrito:', error);
+      alert('Error al agregar el producto al carrito');
+    }
+  };
+
   if (error) {
     return <div>{error}</div>;
   }
@@ -128,6 +147,7 @@ const ProductList = () => {
 
   return (
     <div>
+      <button onClick={handleProfileClick}>Ver Perfil</button>
       <h1>Lista de Productos</h1>
       {user.role === 'admin' && (
         <div>
@@ -135,17 +155,17 @@ const ProductList = () => {
         </div>
       )}
       <div>
-    <label htmlFor="categoria">Categoría: </label>
-    <select id="categoria" name="categoria" value={categoria} onChange={handleFilterChange}>
-        <option value="">Todas</option>
-        <option value="zapatillas">Zapatillas</option>
-        <option value="remeras">Remeras</option>
-        <option value="camperas">Camperas</option>
-        <option value="pantalones">Pantalones</option>
-        <option value="gorras">Gorras</option>
-        <option value="conjuntos">Conjuntos</option>
-    </select>
-</div>
+        <label htmlFor="categoria">Categoría: </label>
+        <select id="categoria" name="categoria" value={categoria} onChange={handleFilterChange}>
+          <option value="">Todas</option>
+          <option value="zapatillas">Zapatillas</option>
+          <option value="remeras">Remeras</option>
+          <option value="camperas">Camperas</option>
+          <option value="pantalones">Pantalones</option>
+          <option value="gorras">Gorras</option>
+          <option value="conjuntos">Conjuntos</option>
+        </select>
+      </div>
       <div>
         <label htmlFor="sort">Ordenar por: </label>
         <select id="sort" name="sort" value={sort} onChange={handleFilterChange}>
@@ -154,37 +174,40 @@ const ProductList = () => {
           <option value="desc">Descendente</option>
         </select>
       </div>
-      
+
       {products.length > 0 ? (
-                <div className="product-list">
-                    {products.map((product) => (
-                        <div className="product-item" key={product._id}>
-                            <h2 className="product-title" onClick={() => handleProductClick(product._id)}>{product.titulo}</h2>
-                            <p className="product-details">Descripción: {product.descripcion}</p>
-                            <p className="product-details">Precio: ${product.precio}</p>
-                            <p className="product-details">Categoría: {product.categoria}</p>
-                            <img src={product.thumbnail} alt={product.titulo} className="product-image" />
-                            {user.role === 'admin' && (
-                                <div className="product-actions">
-                                    <button onClick={() => handleEditProduct(product._id)}>Modificar</button>
-                                    <button onClick={() => handleDeleteProduct(product._id)}>Eliminar</button>
-                                </div>
-                            )}
-                        </div>
-                    ))}
+        <div className="product-list">
+          {products.map((product) => (
+            <div className="product-item" key={product._id}>
+              <h2 className="product-title" onClick={() => handleProductClick(product._id)}>{product.titulo}</h2>
+              <p className="product-details">Descripción: {product.descripcion}</p>
+              <p className="product-details">Precio: ${product.precio}</p>
+              <p className="product-details">Categoría: {product.categoria}</p>
+              <img src={product.thumbnail} alt={product.titulo} className="product-image" />
+              {user.role === 'admin' && (
+                <div className="product-actions">
+                  <button onClick={() => handleEditProduct(product._id)}>Modificar</button>
+                  <button onClick={() => handleDeleteProduct(product._id)}>Eliminar</button>
                 </div>
-            ) : (
-                <p>No hay productos disponibles.</p>
-            )}
-            <div className="pagination">
-                {prevLink && <button onClick={() => handlePageChange(prevLink)}>&lt;&lt; Anterior</button>}
-                <span>Página: {page}</span>
-                {nextLink && <button onClick={() => handlePageChange(nextLink)}>Siguiente &gt;&gt;</button>}
+              )}
+              {user.role === 'user' && (
+                <button onClick={() => handleAddToCart(product._id)}>Agregar al Carrito</button>
+              )}
             </div>
-            <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>
-            {user.role === 'user' && (
-                <button className="view-cart-button" onClick={handleViewCart}>Ver Carrito</button>
-            )}
+          ))}
+        </div>
+      ) : (
+        <p>No hay productos disponibles.</p>
+      )}
+      <div className="pagination">
+        {prevLink && <button onClick={() => handlePageChange(prevLink)}>&lt;&lt; Anterior</button>}
+        <span>Página: {page}</span>
+        {nextLink && <button onClick={() => handlePageChange(nextLink)}>Siguiente &gt;&gt;</button>}
+      </div>
+      <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>
+      {user.role === 'user' && (
+        <button className="view-cart-button" onClick={handleViewCart}>Ver Carrito</button>
+      )}
     </div>
   );
 };

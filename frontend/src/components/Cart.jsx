@@ -25,24 +25,28 @@ const Cart = () => {
     return <div>Cargando carrito...</div>;
   }
 
+  const total = cart.products.reduce((acc, item) => acc + item.id.precio * item.quantity, 0);
+
   return (
     <div>
       <h1>Tu Carrito</h1>
       {cart.products.length > 0 ? (
-        cart.products.map((item) => (
-          <div key={item.id._id}>
-            <h2>{item.id.titulo}</h2>
-            <p>Cantidad: {item.quantity}</p>
-            <p>Precio por unidad: ${item.id.precio}</p>
-            <p>Total: ${item.id.precio * item.quantity}</p> {/* Aquí se multiplica el precio por la cantidad */}
-          </div>
-        ))
+        <div>
+          {cart.products.map((item) => (
+            <div key={item.id._id}>
+              <h2>{item.id.titulo}</h2>
+              <p>Cantidad: {item.quantity}</p>
+              <p>Precio por unidad: ${item.id.precio}</p>
+              <p>Total: ${item.id.precio * item.quantity}</p> {/* Multiplica el precio por la cantidad */}
+            </div>
+          ))}
+          <h3>Total del carrito: ${total}</h3> {/* Mostrar el total del carrito */}
+        </div>
       ) : (
         <p>El carrito está vacío</p>
       )}
     </div>
   );
-  
 };
 
 export default Cart;

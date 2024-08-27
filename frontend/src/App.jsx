@@ -8,6 +8,7 @@ import ProductDetail from './pages/ProductDetail'; // Importa el nuevo component
 import ProtectedRoute from './components/ProtectedRoute';
 import ProtectedAuth from './components/ProtectedAuth';
 import Cart from './components/Cart'
+import UserProfile from './components/UserProfile';
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                     <Route path="/products" element={<Products />} />
                     <Route path="/products/:id" element={<ProductDetail />} />
                     <Route path="/carts/:id" element={<Cart />} />
+                    <Route path="/profile" element={<UserProfile />} />
                 </Route>
 
                 <Route element={<ProtectedRoute requiredRole="admin" />}>
