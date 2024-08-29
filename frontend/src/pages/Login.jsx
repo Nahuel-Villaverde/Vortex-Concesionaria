@@ -38,6 +38,7 @@ const Login = () => {
             <a href="/register">Registrarse</a>
             <hr />
             <button onClick={handleGoogleLogin}>Iniciar sesión con Google</button>
+            <a href="#" onClick={() => navigate('/forgot-password')}>¿Olvidaste tu contraseña?</a>
         </div>
     );
 };
