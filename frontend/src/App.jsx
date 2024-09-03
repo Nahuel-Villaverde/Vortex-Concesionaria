@@ -4,7 +4,7 @@ import Register from './pages/Register';
 import Products from './pages/Products';
 import CreateProduct from './pages/CreateProduct';
 import EditProduct from './pages/EditProduct';
-import ProductDetail from './pages/ProductDetail'; // Importa el nuevo componente
+import ProductDetail from './pages/ProductDetail';
 import ProtectedRoute from './components/ProtectedRoute';
 import ProtectedAuth from './components/ProtectedAuth';
 import Cart from './components/Cart'
@@ -16,15 +16,16 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Navigate to="/login" />} />
+                <Route path="/" element={<Navigate to="/products" />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/reset-password/:token" element={<ResetPassword />} />
 
+                <Route path="/products" element={<Products />} />
+                <Route path="/products/:id" element={<ProductDetail />} />
+
                 <Route element={<ProtectedAuth />}>
-                    <Route path="/products" element={<Products />} />
-                    <Route path="/products/:id" element={<ProductDetail />} />
                     <Route path="/carts/:id" element={<Cart />} />
                     <Route path="/profile" element={<UserProfile />} />
                 </Route>

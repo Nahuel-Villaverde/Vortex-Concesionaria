@@ -1,3 +1,4 @@
+// Products.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -19,27 +20,34 @@ const ProductList = () => {
   const [nextLink, setNextLink] = useState(null);
 
   useEffect(() => {
-    const fetchUserAndProducts = async () => {
+    const fetchProducts = async () => {
       try {
-        const userResponse = await axios.get('/api/sessions/current_user');
-        setUser(userResponse.data);
-
+        // Cargar los productos sin autenticación
         const productsResponse = await axios.get(`/api/products?page=${page}&limit=${limit}&categoria=${categoria}&sort=${sort}`);
         setProducts(productsResponse.data.payload);
         setPrevLink(productsResponse.data.prevLink);
         setNextLink(productsResponse.data.nextLink);
+
+        // Intentar obtener el usuario autenticado (puede fallar si no está autenticado)
+        try {
+          const userResponse = await axios.get('/api/sessions/current_user');
+          setUser(userResponse.data);
+        } catch (error) {
+          setUser(null); // Usuario no autenticado
+        }
       } catch (error) {
         console.error('Error:', error);
         setError('Error al cargar los productos');
       }
     };
 
-    fetchUserAndProducts();
+    fetchProducts();
   }, [page, limit, categoria, sort]);
 
   const handleLogout = async () => {
     try {
       await axios.post('/api/sessions/logout');
+      setUser(null); // Al cerrar sesión, se actualiza el estado del usuario
       navigate('/login');
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
@@ -79,7 +87,7 @@ const ProductList = () => {
     if (user && user.cartId) {
       navigate(`/carts/${user.cartId}`);
     } else {
-      console.error('No se encontró el carrito del usuario.');
+      navigate('/login'); // Redirige a la página de inicio de sesión si no está autenticado
     }
   };
 
@@ -119,10 +127,18 @@ const ProductList = () => {
   };
 
   const handleProfileClick = () => {
-    navigate('/profile');
+    if (user) {
+      navigate('/profile');
+    } else {
+      navigate('/login'); // Redirige a la página de inicio de sesión si no está autenticado
+    }
   };
 
   const handleAddToCart = async (productId) => {
+    if (!user) {
+      navigate('/login'); // Redirige a la página de inicio de sesión si no está autenticado
+      return;
+    }
     try {
       const cartId = user.cartId;
       const response = await axios.post(`/api/carts/${cartId}/products/${productId}`);
@@ -141,15 +157,11 @@ const ProductList = () => {
     return <div>{error}</div>;
   }
 
-  if (!user) {
-    return <div>Cargando...</div>;
-  }
-
   return (
     <div>
       <button onClick={handleProfileClick}>Ver Perfil</button>
       <h1>Lista de Productos</h1>
-      {user.role === 'admin' && (
+      {user?.role === 'admin' && (
         <div>
           <button onClick={handleAddProduct}>Agregar Producto</button>
         </div>
@@ -179,19 +191,24 @@ const ProductList = () => {
         <div className="product-list">
           {products.map((product) => (
             <div className="product-item" key={product._id}>
-              <h2 className="product-title" onClick={() => handleProductClick(product._id)}>{product.titulo}</h2>
+              <h2 className="product-title" onClick={() => handleProductClick(product._id)}>
+                {product.titulo}
+              </h2>
               <p className="product-details">Descripción: {product.descripcion}</p>
               <p className="product-details">Precio: ${product.precio}</p>
               <p className="product-details">Categoría: {product.categoria}</p>
               <img src={product.thumbnail} alt={product.titulo} className="product-image" />
-              {user.role === 'admin' && (
+              {user?.role === 'admin' && (
                 <div className="product-actions">
                   <button onClick={() => handleEditProduct(product._id)}>Modificar</button>
                   <button onClick={() => handleDeleteProduct(product._id)}>Eliminar</button>
                 </div>
               )}
-              {user.role === 'user' && (
+              {user?.role === 'user' && (
                 <button onClick={() => handleAddToCart(product._id)}>Agregar al Carrito</button>
+              )}
+              {!user && (
+                <button onClick={() => navigate('/login')}>Iniciar sesión para agregar al carrito</button>
               )}
             </div>
           ))}
@@ -204,8 +221,8 @@ const ProductList = () => {
         <span>Página: {page}</span>
         {nextLink && <button onClick={() => handlePageChange(nextLink)}>Siguiente &gt;&gt;</button>}
       </div>
-      <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>
-      {user.role === 'user' && (
+      {user && <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>}
+      {user?.role === 'user' && (
         <button className="view-cart-button" onClick={handleViewCart}>Ver Carrito</button>
       )}
     </div>

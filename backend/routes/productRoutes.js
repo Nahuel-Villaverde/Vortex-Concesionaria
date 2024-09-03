@@ -5,8 +5,8 @@ import { isAuthenticated, isAdmin } from '../middleware/auth.js';
 
 const router = Router();
 
-router.get('/', isAuthenticated, getProducts);
-router.get('/:id', isAuthenticated, getProductById);
+router.get('/', /* isAuthenticated, */ getProducts);
+router.get('/:id', /* isAuthenticated, */ getProductById);
 router.post('/',  /* isAuthenticated, isAdmin, */ createProduct);
 router.put('/:id', isAuthenticated, isAdmin,  updateProduct);
 router.delete('/:id', isAuthenticated, isAdmin, deleteProduct);
