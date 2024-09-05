@@ -11,6 +11,7 @@ import Cart from './components/Cart'
 import UserProfile from './components/UserProfile';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
+import TicketView from './components/TicketView';
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/products/:id" element={<ProductDetail />} />
 
                 <Route element={<ProtectedAuth />}>
+                    <Route path="/tickets/:id" element={<TicketView />} />
                     <Route path="/carts/:id" element={<Cart />} />
                     <Route path="/profile" element={<UserProfile />} />
                 </Route>

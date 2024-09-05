@@ -45,6 +45,25 @@ const Cart = () => {
     }
   };
 
+  const handleCheckout = async () => {
+    try {
+      const response = await axios.post(`/api/carts/${id}/purchase`);
+      
+      if (response.status === 200) {
+        const ticket = response.data;
+        const ticketUrl = `/tickets/${ticket._id}`;
+        window.open(ticketUrl, '_blank'); // Abre el ticket en una nueva pestaña
+
+        await handleClearCart();
+      } else {
+        alert(`Error: ${response.data.message}`);
+      }
+    } catch (error) {
+      console.error('Error al finalizar la compra:', error);
+      alert('Hubo un error al intentar finalizar la compra');
+    }
+  };
+
   return (
     <div>
       <h1>Tu Carrito</h1>
@@ -63,6 +82,7 @@ const Cart = () => {
           <h3>Total del carrito: ${total}</h3>
 
           <button onClick={handleClearCart}>Eliminar Todos los Productos</button>
+          <button onClick={handleCheckout}>Finalizar Compra</button>
         </div>
       ) : (
         <p>El carrito está vacío</p>

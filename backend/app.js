@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import passport from 'passport';
 import session from 'express-session';
 import bodyParser from 'body-parser';
@@ -12,12 +13,19 @@ import sessionsRouter from './routes/session.js';
 import cartRouter from './routes/carts.api.js';
 /* import productViewsRouter from './routes/views/product.views.router.js'; */
 import { fileURLToPath } from 'url';
+import ticketViewRouter from './routes/ticket.routes.js';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 const MONGO_URL = process.env.MONGO_URL;
+
+app.use(cors({
+  origin: 'http://localhost:5173', // Reemplaza con la URL de tu frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos que deseas permitir
+  credentials: true // Si estás manejando cookies o sesiones
+}));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -61,6 +69,7 @@ app.get('/', (req, res) => {
 app.use('/api/sessions', sessionsRouter);
 app.use('/api/products', productRoutes);
 app.use('/api/carts', cartRouter);
+app.use('/api/tickets', ticketViewRouter);
 /* app.use('/', productViewsRouter); */
 
 app.listen(PORT, () => {
