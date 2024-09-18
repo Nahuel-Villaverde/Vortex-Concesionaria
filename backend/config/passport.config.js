@@ -4,13 +4,14 @@ import local from 'passport-local';
 import userService from '../models/user.js';
 import { createHash, isValidPassword } from '../utils.js';
 import dotenv from 'dotenv';
+import cartModel from '../models/cart.model.js';
 
 dotenv.config();
 
 const LocalStrategy = local.Strategy;
 
 const initializePassport = () => {
-    
+
     passport.use('register', new LocalStrategy(
         { passReqToCallback: true, usernameField: 'email' }, async (req, username, password, done) => {
             const { first_name, last_name, email, age } = req.body;
@@ -51,9 +52,14 @@ const initializePassport = () => {
                     last_name: profile.name.familyName,
                     email: profile.emails[0].value,
                     password: "",
-                    role: 'user' 
+                    role: 'user'
                 };
                 let result = await userService.create(newUser);
+
+                // Crear un carrito para el nuevo usuario
+                const newCart = await cartModel.create({ products: [] });
+                result.cartId = newCart._id;
+                await result.save();
 
                 done(null, result);
             } else {

@@ -12,6 +12,7 @@ import UserProfile from './components/UserProfile';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
 import TicketView from './components/TicketView';
+import ProductContainer from './pages/ProductContainer';
 
 function App() {
     return (
@@ -23,7 +24,7 @@ function App() {
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-                <Route path="/products" element={<Products />} />
+                <Route path="/products" element={<ProductContainer />} />
                 <Route path="/products/:id" element={<ProductDetail />} />
 
                 <Route element={<ProtectedAuth />}>
