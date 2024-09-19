@@ -1,14 +1,14 @@
 import React from 'react';
 import Product from './Product';
 
-const ProductList = ({ products, user, handlePageChange, prevLink, nextLink }) => {
+const ProductList = ({ products, user, handleDeleteProduct, handlePageChange, prevLink, nextLink }) => {
   return (
     <div>
       <h1>Lista de Productos</h1>
       <div className="product-list">
         {products.length > 0 ? (
           products.map((product) => (
-            <Product key={product._id} product={product} user={user} />
+            <Product key={product._id} product={product} user={user} handleDeleteProduct={handleDeleteProduct} />
           ))
         ) : (
           <p>No hay productos disponibles.</p>

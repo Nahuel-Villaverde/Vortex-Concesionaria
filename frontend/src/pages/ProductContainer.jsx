@@ -40,6 +40,22 @@ const ProductContainer = () => {
     fetchProducts();
   }, [page, limit, categoria, sort]);
 
+  const handleDeleteProduct = async (productId) => {
+    try {
+      const response = await axios.delete(`/api/products/${productId}`);
+      if (response.status === 200) {
+        // Actualizamos el estado de los productos eliminando el producto
+        setProducts(products.filter((product) => product._id !== productId));
+        alert('Producto eliminado con éxito');
+      } else {
+        alert('Error al eliminar el producto');
+      }
+    } catch (error) {
+      console.error('Error al eliminar el producto:', error);
+      alert('Error al eliminar el producto');
+    }
+  };
+
   const handleLogout = async () => {
     try {
       await axios.post('/api/sessions/logout');
@@ -55,6 +71,14 @@ const ProductContainer = () => {
       navigate(`/carts/${user.cartId}`);
     } else {
       navigate('/login');
+    }
+  };
+
+  const handleProfileClick = () => {
+    if (user) {
+      navigate('/profile');
+    } else {
+      navigate('/login'); // Redirige a la página de inicio de sesión si no está autenticado
     }
   };
 
@@ -93,6 +117,10 @@ const ProductContainer = () => {
     navigate(`/products?page=1&limit=${limit}&categoria=${categoria}&sort=${sort}`);
   };
 
+  const handleAddProduct = () => {
+    navigate('/products/create');
+  };
+
   if (error) {
     return <div>{error}</div>;
   }
@@ -100,8 +128,14 @@ const ProductContainer = () => {
   return (
     <div>
       {user && <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>}
+      {user && <button className="profile-button" onClick={handleProfileClick}>Ver Perfil</button>}
       {user?.role === 'user' && (
         <button className="view-cart-button" onClick={handleViewCart}>Ver Carrito</button>
+      )}
+      {user?.role === 'admin' && (
+        <div>
+          <button onClick={handleAddProduct}>Agregar Producto</button>
+        </div>
       )}
 
       <div>
@@ -138,6 +172,7 @@ const ProductContainer = () => {
       <ProductList 
         products={products} 
         user={user}
+        handleDeleteProduct={handleDeleteProduct}
         handlePageChange={handlePageChange}
         prevLink={prevLink}
         nextLink={nextLink}

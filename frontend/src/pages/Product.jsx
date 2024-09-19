@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Product = ({ product, user }) => {
+const Product = ({ product, user, handleDeleteProduct }) => {
   const navigate = useNavigate();
 
   const handleProductClick = () => {
@@ -12,13 +12,7 @@ const Product = ({ product, user }) => {
   const handleEditProduct = () => {
     navigate(`/products/${product._id}/edit`);
   };
-
-  const handleDeleteProduct = async () => {
-    if (window.confirm('¿Estás seguro de que deseas eliminar este producto?')) {
-      // Lógica para eliminar producto
-    }
-  };
-
+  
   const handleAddToCart = async (productId) => {
     if (!user) {
       navigate('/login'); // Redirige a la página de inicio de sesión si no está autenticado
@@ -62,7 +56,7 @@ const Product = ({ product, user }) => {
       {user?.role === 'admin' && (
         <div className="product-actions">
           <button onClick={handleEditProduct}>Modificar</button>
-          <button onClick={handleDeleteProduct}>Eliminar</button>
+          <button onClick={() => handleDeleteProduct(product._id)}>Eliminar</button> {/* Aquí llamamos la función */}
         </div>
       )}
 
