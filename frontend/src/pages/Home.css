@@ -1,0 +1,64 @@
+.home-container {
+  margin-right: 80px;
+  margin-left: 80px;
+}
+
+.home-container h1 {
+  font-size: 64px; /* Tamaño de 64 px */
+  font-weight: 600; /* Peso semibold */
+  color: #FFFFFF; /* Color del texto */
+  margin: 0; /* Elimina márgenes predeterminados */
+  max-width: 611px;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* Para alinear la imagen grande con el texto */
+.image-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Alinea el contenido en la parte superior */ /* Espacio superior para separar del título */
+}
+
+.large-image img {
+  width: 560px;
+  height: auto;
+  object-fit: cover; /* Para que la imagen no se deforme */
+  margin-top: -140px; /* Mueve la imagen grande hacia arriba para alinearla con el título */
+  opacity: 1; /* Establece la opacidad inicial al 70% */
+  transition: opacity 0.3s ease-in-out; /* Transición suave para el hover */
+}
+
+/* Imágenes pequeñas alineadas en fila (row) */
+.small-images {
+  display: flex;
+  flex-direction: row; /* Mantiene las imágenes en fila (row) */
+  justify-content: flex-start; /* Alinea las imágenes pequeñas a la izquierda */
+  gap: 48px; /* Espacio entre las dos imágenes pequeñas */
+  align-self: flex-end; /* Alinea las imágenes pequeñas al borde inferior de la imagen grande */
+}
+
+.small-images img {
+  width: 350px;
+  height: 243px;
+  object-fit: cover; /* Para mantener la proporción de la imagen */
+  opacity: 1; /* Establece la opacidad inicial al 70% */
+  transition: opacity 0.3s ease-in-out; /* Transición suave para el hover */
+}
+
+
+.small-images img:hover, .large-image img:hover {
+  opacity: 0.6;
+}

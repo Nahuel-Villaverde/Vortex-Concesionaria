@@ -13,17 +13,21 @@ import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
 import TicketView from './components/TicketView';
 import ProductContainer from './pages/ProductContainer';
+import Home from './pages/Home'
+import Navbar from './components/Navbar';
 
 function App() {
     return (
         <Router>
+            <Navbar />
             <Routes>
-                <Route path="/" element={<Navigate to="/products" />} />
+                <Route path="/" element={<Navigate to="/home" />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/reset-password/:token" element={<ResetPassword />} />
 
+                <Route path="/home" element={<Home />} />
                 <Route path="/products" element={<ProductContainer />} />
                 <Route path="/products/:id" element={<ProductDetail />} />
 

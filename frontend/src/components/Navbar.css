@@ -1,0 +1,77 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0; /* Espacio vertical */
+    margin: 0 80px; /* Espacio de 80 px a la izquierda y derecha */
+    margin-bottom: 72px;
+    background-color: #040404; /* Cambia el color de fondo según tu diseño */
+    border-bottom: 1px solid #6F6F6F;
+    position: sticky; /* Mantiene el navbar fijo en la parte superior */
+  top: 0; /* Se coloca en la parte superior */
+  left: 0; /* Alineación al lado izquierdo */
+  right: 0; /* Alineación al lado derecho */
+  z-index: 1000; /* Asegura que el navbar esté encima de otros elementos */
+  }
+  
+  .left-section {
+    display: flex;
+    align-items: center; /* Alinea el logo y los enlaces verticalmente */
+  }
+
+  .logo img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .logo {
+    height: 26px;
+    width: 63px;
+  }
+  
+  .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Espaciado entre los enlaces */
+  margin-left: 72px; /* Espacio de 72 px a la izquierda del nav-links */
+  padding-left: 0px;
+}
+  
+  .nav-links li {
+    margin-left: 72px; /* Espacio de 72 px solo para el primer enlace */
+  }
+  
+  .nav-links li:first-child {
+    margin-left: 0; /* Quita el margen izquierdo del primer enlace */
+  }
+  
+  .nav-links li a {
+    color: #FFFFFF; /* Color blanco */
+    text-decoration: none; /* Quitar subrayado */
+    font-size: 20px; /* Tamaño de la tipografía */
+    font-weight: 400; /* Peso regular (normal) */
+    opacity: 0.8; /* Opacidad del 80% */
+  }
+  
+  .nav-links li a:hover {
+    text-decoration: underline; /* Opcional: agrega subrayado al pasar el mouse */
+    opacity: 1;
+  }
+  
+  .login-link {
+    margin-left: auto; /* Mueve el enlace de login a la derecha */
+  }
+  
+  .login-link a {
+    color: #FFFFFF; /* Cambia el color según prefieras */
+    font-size: 24px; /* Tamaño de 24 px */
+    font-weight: 600; /* Peso semibold */
+    text-decoration: none; /* Quitar subrayado */
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline; /* Opcional: agrega subrayado al pasar el mouse */
+    color: #FFFFFF;
+  }
+  
+  

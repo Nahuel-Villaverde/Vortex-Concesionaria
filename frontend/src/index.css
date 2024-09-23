@@ -25,7 +25,7 @@ body {
   display: block; /* Cambia display a block para permitir que el contenido se extienda en todo el ancho */
   min-width: 320px;
   min-height: 100vh;
-  background-color: #242424; /* Asegura que el fondo se extienda completamente */
+  background-color: #040404; /* Asegura que el fondo se extienda completamente */
 }
 
 h1 {
