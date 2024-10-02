@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
+
 .home-container {
+  font-family: 'Inter', sans-serif;
   margin-right: 80px;
   margin-left: 80px;
 }
@@ -9,6 +12,10 @@
   color: #FFFFFF; /* Color del texto */
   margin: 0; /* Elimina márgenes predeterminados */
   max-width: 611px;
+}
+
+p, h1, h2, h3, h4, h5, h6, span {
+  cursor: default;
 }
 
 .image-container {
@@ -61,4 +68,477 @@
 
 .small-images img:hover, .large-image img:hover {
   opacity: 0.6;
+}
+
+
+.catalog{
+  margin-top: 72px;
+  padding-bottom: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #313131;
+}
+
+.catalog h3{
+  margin: 0;
+  font-size: 48px;
+  font-weight: 600;
+  color: #F0F0F0;
+  max-width: 280px;
+}
+
+.catalog p{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #e6e6e6;
+  max-width: 500px;
+  text-align: center;
+}
+
+.catalog button{
+  width: 268px;
+  background-color: #A10000;
+  border-radius: 60px;
+  border: none;
+  font-size: 32px;
+  transition: 0.3s ease-in-out;
+}
+
+.catalog button:hover{
+  background-color: #850000;
+
+}
+
+
+.our-vehicles{
+  margin-top: 120px;
+  margin-bottom: 120px;
+  border-bottom: 1px solid #313131;
+  padding-bottom: 120px;
+}
+
+.our-vehicles-text{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 72px;
+}
+
+.our-vehicles-text h2{
+  font-size: 48px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.our-vehicles-text p{
+  color: #e6e6e6;
+}
+
+.car-card-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.cars{
+  display: flex;
+  flex-direction: column;
+}
+
+.cars img{
+  width: 270px;
+}
+
+.card-description{
+  width: 270px;
+  background-color: #FFFFFF;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding-bottom: 16px;
+}
+
+.card-description h5{
+  color: #040404;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 12px;
+  margin-left: 16px;
+  margin-bottom: 0;
+}
+
+.card-description span{
+  color: #757575;
+  font-weight: 700;
+  font-size: 12px;
+  margin-top: 9px;
+  margin-left: 16px;
+}
+
+.price-buy{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  margin-left: 16px;
+}
+
+.price-buy span{
+  color: #040404;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0;
+}
+
+.price-buy button{
+  margin-right: 16px;
+  background-color: transparent;
+  color: #040404;
+  font-size: 14px;
+  font-weight: 650;
+  border-color: #A9A9A9;
+  border-width: 2px;
+  border-radius: 20px;
+}
+
+.price-buy button:hover{
+  border-color: #ff0101;
+}
+
+.see-all{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 30px;
+  background-color: #A10000;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.see-all:hover{
+  background-color: #850000;
+}
+
+.about-us{
+  margin-top: 120px;
+  margin-bottom: 120px;
+  border-bottom: 1px solid #313131;
+  padding-bottom: 120px;
+}
+
+.about-topside{
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-us-text{
+  max-width: 600px;
+}
+
+.about-us-text h2{
+  font-size: 48px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.about-us-text p{
+  font-size: 15px;
+  color: #e6e6e6;
+  font-weight: 500;
+}
+
+.years-experience, .vehicles-sold {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 40px;
+  position: relative; 
+}
+
+.years-experience::before, .vehicles-sold::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 70%;
+  width: 4px;
+  background-color: #A10000; 
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.numbers-verify{
+  font-size: 48px;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.plus{
+  color: #6F6F6F;
+  font-size: 48px;
+  font-weight: 600;
+  padding-right: 72px;
+}
+
+.description-numbers{
+  font-size: 16px;
+  color: #A10000;
+  font-weight: 500;
+}
+
+.medals {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-top: 56px;
+}
+
+.mini-medal {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  align-items: center;
+  text-align: center;
+}
+
+.mini-medal img {
+  width: 80px;
+}
+
+.mini-medal h5 {
+  font-size: 18px;
+  color: #A10000;
+  font-weight: 800;
+  margin: 0;
+  height: 40px; 
+}
+
+.mini-medal p {
+  max-width: 229px;
+  text-align: center;
+  min-height: 80px;
+  font-weight: 600;
+  color: #F0F0F0;
+  font-size: 14px;
+  margin-top: 0;
+}
+
+.testimonials{
+  border-bottom: 1px solid #6F6F6F;
+  margin-bottom: 72px;
+  padding-bottom: 120px;
+}
+
+.title-testimonials{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title-testimonials h6{
+  font-weight: 400;
+  font-size: 16px;
+  color: #919191;
+  margin: 0;
+}
+
+.title-testimonials h2{
+  font-weight: 600;
+  font-size: 48px;
+  color: #FFFFFF;
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.title-testimonials p{
+  font-weight: 400;
+  font-size: 14px;
+  color: #e6e6e6;
+  max-width: 480px;
+  text-align: center;
+  margin: 0;
+}
+
+.testimony-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: self-start;
+}
+
+.testimony{
+  max-width: 550px;
+  margin-top: 60px;
+}
+
+.testimony p{
+  text-align: center;
+  height: 110px;
+  font-size: 15px;
+  font-weight: 550;
+}
+
+.person{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.person img{
+  width: 45px;
+}
+
+.person-left-part{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.person-left-part h4{
+  margin-left: 24px;
+}
+
+.person-left-part img{
+  width: 64px;
+}
+
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 72px;
+}
+
+.vortex-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+}
+
+.vortex-container h3{
+  font-size: 24px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.vortex-container img{
+  width: 63px;
+}
+
+.info p{
+  max-width: 399px;
+  font-size: 15px;
+  color: #919191;
+}
+
+.info{
+  width: 430px;
+}
+
+.hours{
+  width: 310px;
+}
+
+.hours h3{
+  font-size: 24px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.days span{
+  color: #919191;
+  font-size: 15px;
+}
+
+.newsletter{
+  width: 430px;
+}
+
+
+.redes{
+  margin-top: 32px;
+}
+
+.red{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.red img{
+  width: 19px;
+}
+
+.days{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.newsletter-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 17px 10px 15px 24px;
+  border: 1px solid #cccccc00;
+  border-radius: 30px; /* Bordes redondeados de 30px */
+  background-color: rgba(217, 217, 217, 0.1); /* Fondo D9D9D9 con 10% de opacidad */
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.newsletter-input::placeholder {
+  color: #919191; /* Color del texto del placeholder */
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.newsletter-btn {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #A10000;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 25px;
+  transition: 0.3s ease-in-out;
+}
+
+.newsletter-btn:hover {
+  background-color: #850000;
+}
+
+.newsletter-title h3{
+  font-size: 24px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.newsletter-title p{
+  font-size: 15px;
+  color: #919191;
 }

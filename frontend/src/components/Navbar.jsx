@@ -11,7 +11,7 @@ const Navbar = () => {
                     <img src={logo} alt="Logo de Vortex" />
                 </Link>
                 <ul className="nav-links">
-                    <li><Link to="/catalog">Catalog</Link></li>
+                    <li><Link to="/products">Catalog</Link></li>
                     <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/clients">Clients</Link></li>
                 </ul>
