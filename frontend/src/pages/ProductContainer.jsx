@@ -74,14 +74,6 @@ const ProductContainer = () => {
     }
   };
 
-  const handleProfileClick = () => {
-    if (user) {
-      navigate('/profile');
-    } else {
-      navigate('/login'); // Redirige a la página de inicio de sesión si no está autenticado
-    }
-  };
-
   const handlePageChange = (link) => {
     const urlParams = new URLSearchParams(link.split('?')[1]);
     const newPage = urlParams.get('page');
@@ -128,7 +120,6 @@ const ProductContainer = () => {
   return (
     <div>
       {user && <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>}
-      {user && <button className="profile-button" onClick={handleProfileClick}>Ver Perfil</button>}
       {user?.role === 'user' && (
         <button className="view-cart-button" onClick={handleViewCart}>Ver Carrito</button>
       )}

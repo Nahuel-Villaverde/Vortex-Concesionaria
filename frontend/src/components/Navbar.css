@@ -74,4 +74,20 @@
     color: #FFFFFF;
   }
   
-  
+  .profile-button {
+    background-color: #1a1a1a; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    text-align: center; /* Centrado de texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Permite el padding y margin */
+    font-size: 16px; /* Tamaño de fuente */
+    margin: 4px 16px; /* Margen */
+    cursor: pointer; /* Cursor tipo puntero al pasar el ratón */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+.profile-button:hover {
+    background-color: #646cff; /* Color de fondo al pasar el ratón */
+}

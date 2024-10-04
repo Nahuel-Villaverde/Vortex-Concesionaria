@@ -1,0 +1,65 @@
+/* Estilos generales para centrar el contenido */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    background-color: #040404;
+}
+
+.register-box {
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    width: 400px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.login-link-container {
+    color: #7A7A7A;
+    margin-bottom: 20px;
+}
+
+.login-link-container a {
+    color: #fff;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-inputs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-inputs .register-input {
+    width: 40%;
+}
+
+.register-input {
+    background-color: #333;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.register-button {
+    background-color: #e50914;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 16px;
+}

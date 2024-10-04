@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../context/UserContext'; // Usa el contexto
+import './Login.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const { refreshUser } = useUser(); // Obtén refreshUser del contexto
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -13,6 +16,7 @@ const Login = () => {
         try {
             const response = await axios.post('/api/sessions/login', { email, password });
             if (response.status === 200) {
+                refreshUser(); // Refresca el usuario
                 navigate('/products');
             }
         } catch (error) {
@@ -25,20 +29,42 @@ const Login = () => {
     };
 
     return (
-        <div>
-            <h2>Iniciar Sesión</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Email:</label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                <label>Contraseña:</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                <button type="submit">Ingresar</button>
-            </form>
-            {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
-            <a href="/register">Registrarse</a>
-            <hr />
-            <button onClick={handleGoogleLogin}>Iniciar sesión con Google</button>
-            <a href="#" onClick={() => navigate('/forgot-password')}>¿Olvidaste tu contraseña?</a>
+        <div className="login-container">
+            <div className="login-box">
+                <div className="logo-login">
+                    <img src='/images/VortexLogo.png' alt="Logo de Vortex" />
+                </div>
+                <h2>Welcome Back</h2>
+                <p className="signup-text">
+                    Don't have an account yet? <a href="/register">Sign up</a>
+                </p>
+                <form onSubmit={handleSubmit} className="login-form">
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email Address"
+                        required
+                        className="login-input"
+                    />
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        required
+                        className="login-input"
+                    />
+                    <button type="submit" className="login-button">Login</button>
+                </form>
+                {error && <div className="error-message">{error}</div>}
+                <div className='google-container'>
+                    <button className="google-login-button" onClick={handleGoogleLogin}>
+                        <img src="images/google-logo.png" alt="Google" /> Sign in with Google
+                    </button>
+                </div>
+                <a href="#" onClick={() => navigate('/forgot-password')} className="forgot-password">Forgot your password?</a>
+            </div>
         </div>
     );
 };

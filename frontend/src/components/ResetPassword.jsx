@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './ResetPassword.css'; // Importa los estilos
 
 const ResetPassword = () => {
     const { token } = useParams(); // Obtén el token desde la URL
@@ -35,20 +36,23 @@ const ResetPassword = () => {
     };
 
     return (
-        <div>
-            <h2>Restablecer Contraseña</h2>
-            <form onSubmit={handlePasswordReset}>
-                <label htmlFor="password">Nueva Contraseña:</label>
-                <input 
-                    type="password" 
-                    name="password" 
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required 
-                />
-                <button type="submit">Restablecer Contraseña</button>
-            </form>
-            {message && <p>{message}</p>}
+        <div className="reset-password-container">
+            <div className="reset-password-mini-container">
+                <h2 className="reset-password-title">Restablecer Contraseña</h2>
+                <form onSubmit={handlePasswordReset} className="reset-password-form">
+                    <label htmlFor="password" className="reset-password-label">Nueva Contraseña:</label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required 
+                        className="reset-password-input"
+                    />
+                    <button type="submit" className="reset-password-button">Restablecer Contraseña</button>
+                </form>
+                {message && <p className="reset-password-message">{message}</p>}
+            </div>
         </div>
     );
 };

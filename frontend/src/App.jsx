@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { UserProvider } from './context/UserContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Products from './pages/Products';
@@ -18,31 +19,33 @@ import Navbar from './components/Navbar';
 
 function App() {
     return (
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Navigate to="/home" />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route path="/reset-password/:token" element={<ResetPassword />} />
+        <UserProvider>
+            <Router>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<Navigate to="/home" />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
+                    <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-                <Route path="/home" element={<Home />} />
-                <Route path="/products" element={<ProductContainer />} />
-                <Route path="/products/:id" element={<ProductDetail />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/products" element={<ProductContainer />} />
+                    <Route path="/products/:id" element={<ProductDetail />} />
 
-                <Route element={<ProtectedAuth />}>
-                    <Route path="/tickets/:id" element={<TicketView />} />
-                    <Route path="/carts/:id" element={<Cart />} />
-                    <Route path="/profile" element={<UserProfile />} />
-                </Route>
+                    <Route element={<ProtectedAuth />}>
+                        <Route path="/tickets/:id" element={<TicketView />} />
+                        <Route path="/carts/:id" element={<Cart />} />
+                        <Route path="/profile" element={<UserProfile />} />
+                    </Route>
 
-                <Route element={<ProtectedRoute requiredRole="admin" />}>
-                    <Route path="/products/create" element={<CreateProduct />} />
-                    <Route path="/products/:id/edit" element={<EditProduct />} />
-                </Route>
-            </Routes>
-        </Router>
+                    <Route element={<ProtectedRoute requiredRole="admin" />}>
+                        <Route path="/products/create" element={<CreateProduct />} />
+                        <Route path="/products/:id/edit" element={<EditProduct />} />
+                    </Route>
+                </Routes>
+            </Router>
+        </UserProvider>
     );
 }
 
