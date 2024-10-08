@@ -20,6 +20,7 @@ p, h1, h2, h3, h4, h5, h6, span {
 
 .image-container {
   position: relative;
+  cursor: pointer;
 }
 
 .image-text {
@@ -145,6 +146,7 @@ p, h1, h2, h3, h4, h5, h6, span {
 .cars{
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .cars img{

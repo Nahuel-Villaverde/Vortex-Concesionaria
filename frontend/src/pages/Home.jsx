@@ -1,22 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+   // Este efecto se ejecuta cuando el componente Home se renderiza o cambia el hash en la URL.
+   useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
+  const handleClick = () => {
+    navigate('/products');
+  };
+
   return (
     <div className="home-container">
       <h1>Elevate Your Travel Experience</h1>
       <div className="image-grid">
         <div className="small-images">
-          <div className="image-container">
+          <div className="image-container" onClick={handleClick}>
             <img src="images/bmwImage.png" alt="BMW" />
             <p className="image-text">BMW</p>
           </div>
-          <div className="image-container">
+          <div className="image-container" onClick={handleClick}>
             <img src="images/audiImage.png" alt="Audi" />
             <p className="image-text">Audi</p>
           </div>
         </div>
-        <div className="large-image image-container">
+        <div className="large-image image-container" onClick={handleClick}>
           <img src="images/mercedezImage.png" alt="Mercedez-Benz" />
           <p className="image-text">Mercedez-Benz</p>
         </div>
@@ -24,7 +43,7 @@ const Home = () => {
       <div className="catalog">
         <h3>In search of perfection</h3>
         <p>Discover the experience of driving a high-end car. Designed with cutting-edge technology, unparalleled comfort, and performance that exceeds all expectations. Choosing a luxury car means opting for safety, prestige, and the pleasure of driving the best.</p>
-        <button className="catalog-button">Catalog</button>
+        <button className="catalog-button" onClick={handleClick}>Catalog</button>
       </div>
       <div className="our-vehicles">
         <div className='our-vehicles-text'>
@@ -33,59 +52,59 @@ const Home = () => {
         </div>
 
         <div className='car-card-container'>
-          <div className='cars'>
+          <div className='cars' onClick={handleClick}>
             <img src="images/serie2.png" alt="BMW serie 2 220i" />
             <div className='card-description'>
               <h5>Serie 2 220I</h5>
               <span>BMW</span>
               <div className='price-buy'>
                 <span>$35.000</span>
-                <button>Buy now</button>
+                <button onClick={handleClick}>Buy now</button>
               </div>
             </div>
           </div>
 
-          <div className='cars'>
+          <div className='cars' onClick={handleClick}>
             <img src="images/A5 Coupe.png" alt="A5 Coupe" />
             <div className='card-description'>
               <h5>A5 Coupe</h5>
               <span>Audi</span>
               <div className='price-buy'>
                 <span>$45.000</span>
-                <button>Buy now</button>
+                <button onClick={handleClick}>Buy now</button>
               </div>
             </div>
           </div>
 
-          <div className='cars'>
+          <div className='cars' onClick={handleClick}>
             <img src="images/model s.png" alt="Model S" />
             <div className='card-description'>
               <h5>Model S</h5>
               <span>Tesla</span>
               <div className='price-buy'>
                 <span>$90.000</span>
-                <button>Buy now</button>
+                <button onClick={handleClick}>Buy now</button>
               </div>
             </div>
           </div>
 
-          <div className='cars'>
+          <div className='cars' onClick={handleClick}>
             <img src="images/E class.png" alt="E-Class Coupe" />
             <div className='card-description'>
               <h5>E-Class Coupe</h5>
               <span>Mercedes-Benz</span>
               <div className='price-buy'>
                 <span>$60.000</span>
-                <button>Buy now</button>
+                <button onClick={handleClick}>Buy now</button>
               </div>
             </div>
           </div>
         </div>
 
-        <button className='see-all'>See all Cars</button>
+        <button className='see-all' onClick={handleClick}>See all Cars</button>
       </div>
 
-      <div className='about-us'>
+      <div className='about-us' id="about-us">
         <div className='about-topside'>
           <div className='about-us-text'>
             <h2>About Us</h2>
@@ -125,7 +144,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='testimonials'>
+      <div className='testimonials' id="testimonials">
         <div className='title-testimonials'>
           <h6>What Our Clients Say</h6>
           <h2>Testimonials</h2>
