@@ -61,20 +61,32 @@ export const getProductById = async (req, res) => {
 };
 
 export const createProduct = async (req, res) => {
-    let { titulo, descripcion, precio, thumbnail, categoria, code, stock } = req.body;
+    const { titulo, descripcion, precio, categoria, code, stock } = req.body;
+    const thumbnail = req.file?.path?.replace(/\\/g, '/'); // Normaliza la ruta de la imagen subida
 
     if (!titulo || !descripcion || !precio || !thumbnail || !categoria || !code || stock === undefined) {
-        return res.send({ status: "error", error: "Faltan parametros" });
+        return res.status(400).send({ status: "error", error: "Faltan parámetros" });
     }
 
     try {
-        let result = await ProductRepository.createProduct({ titulo, descripcion, precio, thumbnail, categoria, code, stock });
+        const newProduct = {
+            titulo,
+            descripcion,
+            precio,
+            thumbnail, // Usar la ruta normalizada
+            categoria,
+            code,
+            stock
+        };
+        const result = await ProductRepository.createProduct(newProduct);
         res.send({ status: "success", payload: result });
     } catch (error) {
         console.error('Error al crear producto:', error);
         res.status(500).send({ status: "error", error: "Error al crear producto" });
     }
 };
+
+
 
 
 export const updateProduct = async (req, res) => {

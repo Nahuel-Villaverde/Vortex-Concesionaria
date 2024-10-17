@@ -12,22 +12,22 @@ const Product = ({ product, user, handleDeleteProduct }) => {
   const handleEditProduct = () => {
     navigate(`/products/${product._id}/edit`);
   };
-  
+
   const handleAddToCart = async (productId) => {
     if (!user) {
       navigate('/login'); // Redirige a la página de inicio de sesión si no está autenticado
       return;
     }
-  
+
     const cartId = user.cartId;
     console.log('Cart ID:', cartId);
     console.log('Product ID:', productId); // Verifica que el productId sea correcto
-  
+
     if (!cartId) {
       alert('No tienes un carrito asignado.');
       return;
     }
-  
+
     try {
       const response = await axios.post(`/api/carts/${cartId}/products/${productId}`);
       if (response.status === 200) {
@@ -40,8 +40,11 @@ const Product = ({ product, user, handleDeleteProduct }) => {
       alert('Error al agregar el producto al carrito');
     }
   };
-  
-  
+
+  // Asegúrate de que product.thumbnail no contenga espacios
+  console.log('Thumbnail:', product.thumbnail);
+  const imageUrl = `http://localhost:8080/uploads/${encodeURIComponent(product.thumbnail.split('/').pop())}`;
+
 
   return (
     <div className="product-item">
@@ -51,18 +54,21 @@ const Product = ({ product, user, handleDeleteProduct }) => {
       <p className="product-details">Descripción: {product.descripcion}</p>
       <p className="product-details">Precio: ${product.precio}</p>
       <p className="product-details">Categoría: {product.categoria}</p>
-      <img src={product.thumbnail} alt={product.titulo} className="product-image" />
+      <img
+        src={imageUrl} // Usa la URL generada dinámicamente
+        alt={product.titulo}
+        className="product-image"
+      />
 
       {user?.role === 'admin' && (
         <div className="product-actions">
           <button onClick={handleEditProduct}>Modificar</button>
-          <button onClick={() => handleDeleteProduct(product._id)}>Eliminar</button> {/* Aquí llamamos la función */}
+          <button onClick={() => handleDeleteProduct(product._id)}>Eliminar</button>
         </div>
       )}
 
       {user?.role === 'user' && (
         <button onClick={() => handleAddToCart(product._id)}>Agregar al Carrito</button>
-
       )}
 
       {!user && (

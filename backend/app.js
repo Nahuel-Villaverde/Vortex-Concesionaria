@@ -17,9 +17,16 @@ import ticketViewRouter from './routes/ticket.routes.js';
 
 dotenv.config();
 
+// Crear __dirname de manera manual
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const PORT = process.env.PORT || 8080;
 const MONGO_URL = process.env.MONGO_URL;
+
+// Configurar carpeta estática 'uploads'
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(cors({
   origin: 'http://localhost:5173', // Reemplaza con la URL de tu frontend

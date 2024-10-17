@@ -7,27 +7,43 @@ const CreateProduct = () => {
     titulo: '',
     descripcion: '',
     precio: '',
-    thumbnail: '',
     categoria: '',
     code: '',
     stock: ''
   });
+  const [thumbnail, setThumbnail] = useState(null); // Estado para la imagen
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: value
     });
+  };
+
+  const handleThumbnailChange = (e) => {
+    setThumbnail(e.target.files[0]); // Guardar el archivo de imagen
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const data = new FormData();
+    
+    // Agrega los datos del producto al FormData
+    Object.keys(formData).forEach(key => {
+      data.append(key, formData[key]);
+    });
+
+    // Agrega la imagen al FormData
+    if (thumbnail) {
+      data.append('thumbnail', thumbnail);
+    }
+
     try {
-      const response = await axios.post('/api/products', formData, {
-        headers: { 'Content-Type': 'application/json' }
+      const response = await axios.post('/api/products', data, {
+        headers: { 'Content-Type': 'multipart/form-data' }
       });
       if (response.status === 200) {
         alert('Producto agregado con éxito');
@@ -71,15 +87,6 @@ const CreateProduct = () => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="thumbnail">Thumbnail:</label>
-        <input
-          type="text"
-          id="thumbnail"
-          name="thumbnail"
-          value={formData.thumbnail}
-          onChange={handleChange}
-          required
-        />
         <label htmlFor="categoria">Categoría:</label>
         <input
           type="text"
@@ -106,6 +113,14 @@ const CreateProduct = () => {
           value={formData.stock}
           onChange={handleChange}
           required
+        />
+        <label htmlFor="thumbnail">Imagen (Thumbnail):</label>
+        <input
+          type="file"
+          id="thumbnail"
+          name="thumbnail"
+          accept="image/*"
+          onChange={handleThumbnailChange}
         />
         <button type="submit">Agregar Producto</button>
       </form>
