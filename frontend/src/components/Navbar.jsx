@@ -39,6 +39,18 @@ const Navbar = () => {
         }
     };
 
+    const handleViewCart = () => {
+        if (user && user.cartId) {
+            navigate(`/carts/${user.cartId}`);
+        } else {
+            navigate('/login');
+        }
+    };
+
+    const handleProfile = () => {
+        navigate('/profile'); // Navega a la página de perfil
+    };
+
     return (
         <nav className="navbar">
             <div className="left-section">
@@ -54,10 +66,13 @@ const Navbar = () => {
             <div className="login-link">
                 {user ? (
                     <>
-                        <Link to="/profile">
-                            <button className="profile-button">Profile</button>
-                        </Link>
-                        <button onClick={handleLogout}>Logout</button>
+                        <button className="profile-button" onClick={handleProfile}>Profile</button>
+                        
+                        <button onClick={handleLogout} className='nav-logout'>Logout</button>
+
+                        {user.role === 'user' && (
+                            <button className="view-cart-button" onClick={handleViewCart}>Ver Carrito</button>
+                        )}
                     </>
                 ) : (
                     <Link to="/login">Login</Link>

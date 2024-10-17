@@ -1,5 +1,6 @@
 import React from 'react';
 import Product from './Product';
+import './ProductList.css'
 
 const ProductList = ({ products, user, handleDeleteProduct, handlePageChange, prevLink, nextLink }) => {
   return (

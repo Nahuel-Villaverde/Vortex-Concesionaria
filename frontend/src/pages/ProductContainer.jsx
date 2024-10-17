@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ProductList from './ProductList'; // Importamos el componente ProductList
+import './ProductContainer.css'
 
 const ProductContainer = () => {
   const navigate = useNavigate();
@@ -56,24 +57,6 @@ const ProductContainer = () => {
     }
   };
 
-  const handleLogout = async () => {
-    try {
-      await axios.post('/api/sessions/logout');
-      setUser(null);
-      navigate('/login');
-    } catch (error) {
-      console.error('Error al cerrar sesión:', error);
-    }
-  };
-
-  const handleViewCart = () => {
-    if (user && user.cartId) {
-      navigate(`/carts/${user.cartId}`);
-    } else {
-      navigate('/login');
-    }
-  };
-
   const handlePageChange = (link) => {
     const urlParams = new URLSearchParams(link.split('?')[1]);
     const newPage = urlParams.get('page');
@@ -118,50 +101,36 @@ const ProductContainer = () => {
   }
 
   return (
-    <div>
-      {user && <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>}
-      {user?.role === 'user' && (
-        <button className="view-cart-button" onClick={handleViewCart}>Ver Carrito</button>
-      )}
+    <div className='mega-container'>
       {user?.role === 'admin' && (
         <div>
           <button onClick={handleAddProduct}>Agregar Producto</button>
         </div>
       )}
 
-      <div>
-        <label htmlFor="categoria">Categoría: </label>
-        <select id="categoria" name="categoria" value={categoria} onChange={handleFilterChange}>
-          <option value="">Todas</option>
-          <option value="zapatillas">Zapatillas</option>
-          <option value="remeras">Remeras</option>
-          <option value="camperas">Camperas</option>
-          <option value="pantalones">Pantalones</option>
-          <option value="gorras">Gorras</option>
-          <option value="conjuntos">Conjuntos</option>
-        </select>
+      <div className="filter-container">
+
+        <div className="sort-container">
+          <label htmlFor="sort">Ordenar por: </label>
+          <select id="sort" name="sort" value={sort} onChange={handleFilterChange}>
+            <option value="">Ninguno</option>
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
+          </select>
+        </div>
+
+        <div className="categories">
+          <button className={`category-button ${categoria === '' ? 'active' : ''}`} onClick={() => handleFilterChange({ target: { name: 'categoria', value: '' } })}>ALL</button>
+          <button className={`category-button ${categoria === 'coupes' ? 'active' : ''}`} onClick={() => handleFilterChange({ target: { name: 'categoria', value: 'coupes' } })}>COUPES</button>
+          <button className={`category-button ${categoria === 'sedans' ? 'active' : ''}`} onClick={() => handleFilterChange({ target: { name: 'categoria', value: 'sedans' } })}>SEDANS</button>
+          <button className={`category-button ${categoria === 'suvs' ? 'active' : ''}`} onClick={() => handleFilterChange({ target: { name: 'categoria', value: 'suvs' } })}>SUVS</button>
+          <button className={`category-button ${categoria === 'electrics' ? 'active' : ''}`} onClick={() => handleFilterChange({ target: { name: 'categoria', value: 'electrics' } })}>ELECTRICS</button>
+          <button className={`category-button ${categoria === 'luxury' ? 'active' : ''}`} onClick={() => handleFilterChange({ target: { name: 'categoria', value: 'luxury' } })}>LUXURY</button>
+        </div>
       </div>
 
-      <div>
-        <label htmlFor="sort">Ordenar por: </label>
-        <select id="sort" name="sort" value={sort} onChange={handleFilterChange}>
-          <option value="">Ninguno</option>
-          <option value="asc">Ascendente</option>
-          <option value="desc">Descendente</option>
-        </select>
-      </div>
-
-      <div>
-        <label htmlFor="limit">Limite de Productos: </label>
-        <select id="limit" value={limit} onChange={handleLimitChange}>
-          <option value={5}>5</option>
-          <option value={10}>10</option>
-          <option value={20}>20</option>
-        </select>
-      </div>
-
-      <ProductList 
-        products={products} 
+      <ProductList
+        products={products}
         user={user}
         handleDeleteProduct={handleDeleteProduct}
         handlePageChange={handlePageChange}

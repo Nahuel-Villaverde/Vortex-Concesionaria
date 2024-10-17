@@ -6,8 +6,8 @@ const Home = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-   // Este efecto se ejecuta cuando el componente Home se renderiza o cambia el hash en la URL.
-   useEffect(() => {
+  // Este efecto se ejecuta cuando el componente Home se renderiza o cambia el hash en la URL.
+  useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
       const element = document.querySelector(hash);
@@ -55,46 +55,54 @@ const Home = () => {
           <div className='cars' onClick={handleClick}>
             <img src="images/serie2.png" alt="BMW serie 2 220i" />
             <div className='card-description'>
-              <h5>Serie 2 220I</h5>
+              <div className='car-card-titles'>
+                <h5>Serie 2 220I</h5>
+                <h5>$35.000</h5>
+              </div>
               <span>BMW</span>
               <div className='price-buy'>
-                <span>$35.000</span>
                 <button onClick={handleClick}>Buy now</button>
               </div>
             </div>
           </div>
 
           <div className='cars' onClick={handleClick}>
-            <img src="images/A5 Coupe.png" alt="A5 Coupe" />
+            <img src="images/A5 Coupe.png" alt="BMW serie 2 220i" />
             <div className='card-description'>
-              <h5>A5 Coupe</h5>
+              <div className='car-card-titles'>
+                <h5>A5 Coupe</h5>
+                <h5>$45.000</h5>
+              </div>
               <span>Audi</span>
               <div className='price-buy'>
-                <span>$45.000</span>
                 <button onClick={handleClick}>Buy now</button>
               </div>
             </div>
           </div>
 
           <div className='cars' onClick={handleClick}>
-            <img src="images/model s.png" alt="Model S" />
+            <img src="images/model s.png" alt="BMW serie 2 220i" />
             <div className='card-description'>
-              <h5>Model S</h5>
+              <div className='car-card-titles'>
+                <h5>Model S</h5>
+                <h5>$90.000</h5>
+              </div>
               <span>Tesla</span>
               <div className='price-buy'>
-                <span>$90.000</span>
                 <button onClick={handleClick}>Buy now</button>
               </div>
             </div>
           </div>
 
           <div className='cars' onClick={handleClick}>
-            <img src="images/E class.png" alt="E-Class Coupe" />
+            <img src="images/E class.png" alt="BMW serie 2 220i" />
             <div className='card-description'>
-              <h5>E-Class Coupe</h5>
+              <div className='car-card-titles'>
+                <h5>E-Class</h5>
+                <h5>$60.000</h5>
+              </div>
               <span>Mercedes-Benz</span>
               <div className='price-buy'>
-                <span>$60.000</span>
                 <button onClick={handleClick}>Buy now</button>
               </div>
             </div>
