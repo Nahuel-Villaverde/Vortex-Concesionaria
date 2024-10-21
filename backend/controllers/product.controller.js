@@ -2,7 +2,7 @@ import ProductRepository from '../services/product.service.js';
 
 export const getProducts = async (req, res) => {
     let page = parseInt(req.query.page) || 1;
-    let limit = parseInt(req.query.limit) || 10;
+    let limit = parseInt(req.query.limit) || 12;
     let categoria = req.query.categoria;
     let sort = req.query.sort;
 

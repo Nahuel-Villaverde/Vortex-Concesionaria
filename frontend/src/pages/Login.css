@@ -42,6 +42,10 @@ h2 {
     color: #fff;
 }
 
+.signup-text a:hover {
+    color: #A10000;
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
@@ -68,6 +72,10 @@ h2 {
     margin-bottom: 20px;
 }
 
+.login-button:hover {
+    background-color: #9e0c0c;
+}
+
 .google-login-button {
     display: flex;
     align-items: center;
@@ -80,6 +88,10 @@ h2 {
     cursor: pointer;
     font-size: 16px;
     width: 100%;
+}
+
+.google-login-button:hover {
+    background-color: #808080;
 }
 
 .google-login-button img {
@@ -98,6 +110,10 @@ h2 {
     display: block;
     margin-top: 20px;
     font-size: 15px;
+}
+
+.forgot-password:hover {
+    color: #A10000;
 }
 
 .google-container{

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './Product.css'
 
 const Product = ({ product, user, handleDeleteProduct }) => {
   const navigate = useNavigate();
@@ -47,34 +48,52 @@ const Product = ({ product, user, handleDeleteProduct }) => {
 
 
   return (
-    <div className="product-item">
-      <h2 className="product-title" onClick={handleProductClick}>
-        {product.titulo}
-      </h2>
-      <p className="product-details">Descripción: {product.descripcion}</p>
-      <p className="product-details">Precio: ${product.precio}</p>
-      <p className="product-details">Categoría: {product.categoria}</p>
+    <div className="product-item" onClick={handleProductClick}>
       <img
         src={imageUrl} // Usa la URL generada dinámicamente
         alt={product.titulo}
         className="product-image"
       />
-
-      {user?.role === 'admin' && (
-        <div className="product-actions">
-          <button onClick={handleEditProduct}>Modificar</button>
-          <button onClick={() => handleDeleteProduct(product._id)}>Eliminar</button>
+      <div className='product-card-description'>
+        <div className='product-card-description-title'>
+          <h2 className="product-title" >
+            {product.titulo}
+          </h2>
+          <p className="product-details">${product.precio}</p>
         </div>
-      )}
 
-      {user?.role === 'user' && (
-        <button onClick={() => handleAddToCart(product._id)}>Agregar al Carrito</button>
-      )}
+        <p className="product-category">{product.categoria}</p>
 
-      {!user && (
-        <button onClick={() => navigate('/login')}>Iniciar sesión para agregar al carrito</button>
-      )}
+
+        {user?.role === 'admin' && (
+          <div className="product-actions">
+            <button className="modifiy-card" onClick={(e) => {
+            e.stopPropagation(); // Evita que el click en el botón se propague al padre
+            handleEditProduct();
+          }}>Modificar</button>
+            <button className="delete-card" onClick={(e) => {
+            e.stopPropagation();
+            handleDeleteProduct(product._id);
+          }}>Eliminar</button>
+          </div>
+        )}
+
+        {user?.role === 'user' && (
+          <button className="add-cart" onClick={(e) => {
+            e.stopPropagation();
+            handleAddToCart(product._id);
+          }}>Add to cart</button>
+        )}
+
+        {!user && (
+          <button className="add-cart" onClick={(e) => {
+            e.stopPropagation();
+            navigate('/login');
+          }}>Login</button>
+        )}
+      </div>
     </div>
+
   );
 };
 

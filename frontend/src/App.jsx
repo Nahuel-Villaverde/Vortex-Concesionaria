@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { UserProvider } from './context/UserContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Products from './pages/Products';
+import Products from './pages/Product';
 import CreateProduct from './pages/CreateProduct';
 import EditProduct from './pages/EditProduct';
 import ProductDetail from './pages/ProductDetail';

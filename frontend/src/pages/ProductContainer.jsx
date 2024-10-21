@@ -13,7 +13,7 @@ const ProductContainer = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(parseInt(searchParams.get('page')) || 1);
-  const [limit, setLimit] = useState(parseInt(searchParams.get('limit')) || 10);
+  const [limit, setLimit] = useState(parseInt(searchParams.get('limit')) || 12);
   const [categoria, setCategoria] = useState(searchParams.get('categoria') || '');
   const [sort, setSort] = useState(searchParams.get('sort') || '');
   const [prevLink, setPrevLink] = useState(null);
@@ -22,7 +22,7 @@ const ProductContainer = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const productsResponse = await axios.get(`/api/products?page=${page}&limit=${limit}&categoria=${categoria}&sort=${sort}`);
+        const productsResponse = await axios.get(`/api/products?page=${page}&limit=12&categoria=${categoria}&sort=${sort}`);
         setProducts(productsResponse.data.payload);
         setPrevLink(productsResponse.data.prevLink);
         setNextLink(productsResponse.data.nextLink);

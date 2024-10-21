@@ -30,6 +30,7 @@
   .category-button:hover {
     background-color: rgba(255, 255, 255, 0);
     color: #F0F0F0;
+    border: 2px solid #A10000;
   }
   
   .sort-container select {
