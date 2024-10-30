@@ -12,7 +12,7 @@ const EditProduct = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(`/api/products/${id}`);
-        setProduct(response.data);
+        setProduct(response.data.payload); // Cambié a .payload si es que ese es el formato de respuesta
       } catch (error) {
         console.error('Error fetching product:', error);
         setError('Error al obtener el producto');
@@ -25,18 +25,26 @@ const EditProduct = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    const productData = {
-      titulo: event.target.titulo.value,
-      descripcion: event.target.descripcion.value,
-      precio: event.target.precio.value,
-      thumbnail: event.target.thumbnail.value,
-      categoria: event.target.categoria.value,
-      code: event.target.code.value,
-      stock: event.target.stock.value
-    };
+    // Crear un FormData para manejar los archivos
+    const formData = new FormData();
+    formData.append('titulo', event.target.titulo.value);
+    formData.append('descripcion', event.target.descripcion.value);
+    formData.append('precio', event.target.precio.value);
+    formData.append('categoria', event.target.categoria.value);
+    formData.append('code', event.target.code.value);
+    formData.append('stock', event.target.stock.value);
+
+    // Si se selecciona un archivo nuevo, se añade al FormData
+    if (event.target.thumbnail.files[0]) {
+      formData.append('thumbnail', event.target.thumbnail.files[0]);
+    }
 
     try {
-      const response = await axios.put(`/api/products/${id}`, productData);
+      const response = await axios.put(`/api/products/${id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       if (response.status === 200) {
         alert('Producto actualizado con éxito');
         navigate('/products');
@@ -60,7 +68,7 @@ const EditProduct = () => {
   return (
     <div>
       <h2>Editar Producto</h2>
-      <form id="updateProductForm" onSubmit={handleSubmit}>
+      <form id="updateProductForm" onSubmit={handleSubmit} encType="multipart/form-data">
         <input type="hidden" name="productId" value={product._id} />
         <label htmlFor="titulo">Título:</label>
         <input type="text" id="titulo" name="titulo" defaultValue={product.titulo} required />
@@ -69,7 +77,7 @@ const EditProduct = () => {
         <label htmlFor="precio">Precio:</label>
         <input type="number" id="precio" name="precio" defaultValue={product.precio} required />
         <label htmlFor="thumbnail">Thumbnail:</label>
-        <input type="text" id="thumbnail" name="thumbnail" defaultValue={product.thumbnail} required />
+        <input type="file" id="thumbnail" name="thumbnail" />
         <label htmlFor="categoria">Categoría:</label>
         <input type="text" id="categoria" name="categoria" defaultValue={product.categoria} required />
         <label htmlFor="code">Code:</label>

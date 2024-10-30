@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './ProductDetail.css';
 
 const ProductDetail = () => {
     const { id } = useParams(); // Obtén el ID del producto desde la URL
@@ -81,33 +82,48 @@ const ProductDetail = () => {
         }
     };
 
+
     if (!product) {
         return <div>Loading...</div>; // Muestra un mensaje de carga mientras se obtienen los datos
     }
 
+    const imageUrl = `http://localhost:8080/uploads/${encodeURIComponent(product.thumbnail.split('/').pop())}`;
+
     return (
         <div>
-            <h1>{product.titulo}</h1>
-            <p>Descripción: {product.descripcion}</p>
-            <p>Precio: {product.precio ? `$${product.precio}` : 'No disponible'}</p>
-            <p>Categoría: {product.categoria || 'No disponible'}</p>
-            <p>Stock: {product.stock ? product.stock : 'No disponible'}</p>
-            <p>Código: {product.code || 'No disponible'}</p>
-            <img src={product.thumbnail} alt={product.titulo} style={{ width: '200px' }} />
+            <div className='detail-container'>
+                <img src={imageUrl} alt={product.titulo} />
 
-            {/* Mostrar botones según el estado del usuario */}
-            {!user && (
-                <button onClick={() => navigate('/login')}>Iniciar sesión para agregar al carrito</button>
-            )}
-            {user && user.role === 'user' && (
-                <button onClick={handleAddToCart}>Agregar al Carrito</button>
-            )}
-            {user && user.role === 'admin' && (
-                <div>
-                    <button onClick={handleEditProduct}>Modificar Producto</button>
-                    <button onClick={handleDeleteProduct}>Eliminar Producto</button>
+                <div className='detail-text'>
+                    <div className='title-category'>
+                        <h1>{product.titulo}</h1>
+                        <p className='category-description'>{product.categoria || 'No disponible'}</p>
+                    </div>
+
+                    <p className='detail-description'>Descripción: {product.descripcion}</p>
+
+                    <div className='price-stock'>
+                        <p className='price-desc'>{product.precio ? `$${product.precio}` : 'No disponible'}</p>
+                        <p className='stock-desc'>Stock: {product.stock ? product.stock : 'No disponible'}</p>
+                    </div>
+
+
+
+                    {/* Mostrar botones según el estado del usuario */}
+                    {!user && (
+                        <button className="add-cart-desc" onClick={() => navigate('/login')}>Iniciar sesión para agregar al carrito</button>
+                    )}
+                    {user && user.role === 'user' && (
+                        <button onClick={handleAddToCart}>Agregar al Carrito</button>
+                    )}
+                    {user && user.role === 'admin' && (
+                        <div>
+                            <button onClick={handleEditProduct}>Modificar Producto</button>
+                            <button onClick={handleDeleteProduct}>Eliminar Producto</button>
+                        </div>
+                    )}
                 </div>
-            )}
+            </div>
         </div>
     );
 };

@@ -23,7 +23,7 @@ router.get('/', /* isAuthenticated, */ getProducts);
 router.get('/:id', /* isAuthenticated, */ getProductById);
 
 router.post('/', upload.single('thumbnail'), /* isAuthenticated, isAdmin, */ createProduct);
-router.put('/:id', isAuthenticated, isAdmin,  updateProduct);
+router.put('/:id', upload.single('thumbnail'), isAuthenticated, isAdmin, updateProduct);
 router.delete('/:id', isAuthenticated, isAdmin, deleteProduct);
 router.get('/create', isAuthenticated);
 

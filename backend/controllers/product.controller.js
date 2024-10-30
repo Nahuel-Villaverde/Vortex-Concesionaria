@@ -93,8 +93,13 @@ export const updateProduct = async (req, res) => {
     const productId = req.params.id;
     const updatedProduct = req.body;
 
+    // Si hay un archivo subido, actualiza el campo thumbnail
+    if (req.file) {
+        updatedProduct.thumbnail = req.file.path.replace(/\\/g, '/'); // Normaliza la ruta de la imagen
+    }
+
     if (!updatedProduct || Object.keys(updatedProduct).length === 0) {
-        return res.status(400).send({ status: "error", error: "Faltan parametros para actualizar" });
+        return res.status(400).send({ status: "error", error: "Faltan parámetros para actualizar" });
     }
 
     try {
