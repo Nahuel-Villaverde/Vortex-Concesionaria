@@ -55,4 +55,13 @@
     background-color: #040404; /* Fondo de las opciones del menú desplegable */
     color: white;
   }
+
+  .add-product-button{
+    margin-bottom: 8px;
+  }
   
+  .add-product-button:hover{
+    background-color: #4e4e4e;
+    transition: background-color 0.2s ease;
+    border-color: transparent;
+  }

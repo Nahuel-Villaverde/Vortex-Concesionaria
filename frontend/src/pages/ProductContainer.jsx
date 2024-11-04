@@ -104,7 +104,7 @@ const ProductContainer = () => {
     <div className='mega-container'>
       {user?.role === 'admin' && (
         <div>
-          <button onClick={handleAddProduct}>Agregar Producto</button>
+          <button className='add-product-button' onClick={handleAddProduct}>Agregar Producto</button>
         </div>
       )}
 

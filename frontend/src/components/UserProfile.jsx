@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './UserProfile.css'
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -28,7 +29,7 @@ const UserProfile = () => {
   }
 
   return (
-    <div>
+    <div className='user-profile-container'>
       <h1>Perfil del Usuario</h1>
       <p>Nombre: {user.first_name}</p>
       <p>Email: {user.email}</p>

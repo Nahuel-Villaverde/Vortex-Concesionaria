@@ -53,6 +53,7 @@
     transition: background-color 0.3s ease;
   }
   
+  
   .logout-button {
     margin-top: 20px;
     background-color: #dc3545;
@@ -82,7 +83,7 @@
     margin: 0;
     color: #636363;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     margin-top: 8px;
 }
 
@@ -97,4 +98,26 @@
 
 .add-cart:hover{
   border: 2px solid #ff0202;
+}
+
+.modifiy-card{
+  max-width: 112px;
+  font-size: 14px;
+}
+
+.modifiy-card:hover{
+  background-color: #4e4e4e;
+  transition: background-color 0.2s ease;
+  border-color: transparent;
+}
+
+.delete-card{
+  max-width: 112px;
+  font-size: 14px;
+}
+
+.delete-card:hover{
+  background-color: #4e4e4e;
+  transition: background-color 0.2s ease;
+  border-color: transparent;
 }

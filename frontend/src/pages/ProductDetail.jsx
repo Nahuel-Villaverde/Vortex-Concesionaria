@@ -114,12 +114,12 @@ const ProductDetail = () => {
                         <button className="add-cart-desc" onClick={() => navigate('/login')}>Iniciar sesión para agregar al carrito</button>
                     )}
                     {user && user.role === 'user' && (
-                        <button onClick={handleAddToCart}>Agregar al Carrito</button>
+                        <button className="add-cart-desc" onClick={handleAddToCart}>Agregar al Carrito</button>
                     )}
                     {user && user.role === 'admin' && (
-                        <div>
-                            <button onClick={handleEditProduct}>Modificar Producto</button>
-                            <button onClick={handleDeleteProduct}>Eliminar Producto</button>
+                        <div className="product-actions-detail">
+                            <button className="product-actions-modify" onClick={handleEditProduct}>Modificar Producto</button>
+                            <button className="product-actions-delete" onClick={handleDeleteProduct}>Eliminar Producto</button>
                         </div>
                     )}
                 </div>

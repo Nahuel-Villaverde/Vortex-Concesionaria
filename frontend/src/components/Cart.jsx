@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import './Cart.css';
 
 const Cart = () => {
   const [cart, setCart] = useState(null);
@@ -9,7 +10,6 @@ const Cart = () => {
   const fetchCart = async () => {
     try {
       const response = await axios.get(`/api/carts/${id}`);
-      console.log('Datos del carrito:', response.data.payload); 
       setCart(response.data.payload);
     } catch (error) {
       console.error('Error al obtener el carrito:', error);
@@ -17,20 +17,19 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    fetchCart(); 
+    fetchCart();
   }, [id]);
 
   if (!cart) {
     return <div>Cargando carrito...</div>;
   }
 
-
   const total = cart.products.reduce((acc, item) => acc + item.id.precio * item.quantity, 0);
 
   const handleDeleteProduct = async (productId) => {
     try {
       await axios.delete(`/api/carts/${id}/products/${productId}`);
-      await fetchCart(); 
+      await fetchCart();
     } catch (error) {
       console.error('Error al eliminar el producto del carrito:', error);
     }
@@ -48,7 +47,7 @@ const Cart = () => {
   const handleCheckout = async () => {
     try {
       const response = await axios.post(`/api/carts/${id}/purchase`);
-      
+
       if (response.status === 200) {
         const ticket = response.data;
         const ticketUrl = `/tickets/${ticket._id}`;
@@ -65,25 +64,56 @@ const Cart = () => {
   };
 
   return (
-    <div>
-      <h1>Tu Carrito</h1>
+    <div className="cart-container">
+      <h1 className="cart-title">Tu Carrito</h1>
       {cart.products.length > 0 ? (
-        <div>
-          {cart.products.map((item, index) => (
-            <div key={`${item.id._id}-${index}`}>
-              <h2>{item.id?.titulo || 'Producto desconocido'}</h2>
-              <p>Cantidad: {item.quantity || 0}</p>
-              <p>Precio por unidad: ${item.id?.precio || 0}</p>
-              <p>Total: ${item.id?.precio * item.quantity || 0}</p>
+        <>
+          <div className="cart-products">
+            {cart.products.map((item, index) => {
+              // Genera la URL de la imagen con encodeURIComponent
+              const imageUrl = item.id?.thumbnail
+                ? `http://localhost:8080/uploads/${encodeURIComponent(item.id.thumbnail.split('/').pop())}`
+                : '';
 
-              <button onClick={() => handleDeleteProduct(item.id._id)}>Eliminar Producto</button>
+              return (
+                <div key={`${item.id._id}-${index}`} className="cart-product">
+                  {imageUrl && (
+                    <img
+                      src={imageUrl}
+                      alt={item.id?.titulo || 'Producto'}
+                      className="product-image"
+                    />
+                  )}
+                  <div className="product-details">
+                    <h2>{item.id?.titulo || 'Producto desconocido'}</h2>
+                    <p>Cantidad: {item.quantity || 0}</p>
+                    <p>Unidad: ${item.id?.precio || 0}</p>
+                    <p>Total: ${item.id?.precio * item.quantity || 0}</p>
+                    <button
+                      className="delete-button"
+                      onClick={() => handleDeleteProduct(item.id._id)}
+                    >
+                      Eliminar Producto
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="cart-summary">
+            <h3 className="cart-total">Total del carrito: ${total}</h3>
+
+            <div className='cart-actions'>
+              <button className="clear-cart-button" onClick={handleClearCart}>
+                Eliminar todos los productos
+              </button>
+              <button className="checkout-button" onClick={handleCheckout}>
+                Finalizar compra
+              </button>
             </div>
-          ))}
-          <h3>Total del carrito: ${total}</h3>
 
-          <button onClick={handleClearCart}>Eliminar Todos los Productos</button>
-          <button onClick={handleCheckout}>Finalizar Compra</button>
-        </div>
+          </div>
+        </>
       ) : (
         <p>El carrito está vacío</p>
       )}

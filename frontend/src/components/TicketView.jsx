@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import './TicketView.css'
 
 const TicketView = () => {
   const [ticket, setTicket] = useState(null);
@@ -27,7 +28,7 @@ const TicketView = () => {
   }
 
   return (
-    <div>
+    <div className='TicketView-container'>
       <h1>Compra finalizada</h1>
       <br />
       <h2>Ticket de compra</h2>

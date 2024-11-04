@@ -1,5 +1,15 @@
 .product-list {
     padding: 0;
     background-color: #040404;
-    gap: 30px
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.pagination{
+    padding-bottom: 30px;
+}
+
+.pagination button:hover{
+    background-color: #4e4e4e;
+    border-color: transparent;
 }
