@@ -5,7 +5,6 @@ import './ProductList.css'
 const ProductList = ({ products, user, handleDeleteProduct, handlePageChange, prevLink, nextLink }) => {
   return (
     <div>
-      <h1>Lista de Productos</h1>
       <div className="product-list">
         {products.length > 0 ? (
           products.map((product) => (

@@ -19,14 +19,9 @@
     align-items: center; /* Alinea el logo y los enlaces verticalmente */
   }
 
-  .logo img {
-    height: 100%;
-    width: 100%;
-  }
-
-  .logo {
-    height: 26px;
-    width: 63px;
+  .navbar-brand.logo {
+    padding: 0;
+    margin-right: 72px;
   }
   
   .nav-links {
@@ -100,4 +95,105 @@
 .nav-logout:hover{
   background-color: #a10000;
   border-color: transparent;
+}
+
+.navbar {
+  background-color: #040404;
+  border-bottom: 1px solid #6F6F6F;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .navbar-brand .logo img {
+  height: 26px;
+  width: 63px;
+}
+
+.navbar-nav .nav-link {
+  color: #FFFFFF;
+  opacity: 0.8;
+  font-size: 20px;
+}
+
+.navbar-nav .nav-link:hover {
+  opacity: 1;
+}
+
+.profile-button, .nav-logout, .view-cart-button {
+  color: white;
+  background-color: #1a1a1a;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.profile-button:hover, .nav-logout:hover, .view-cart-button:hover {
+  background-color: #a10000;
+}
+
+.img-navbar{
+  width: 63px;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 48px;
+}
+
+.nav-item{
+  margin-right: 40px;
+}
+.navbar-links{
+  font-weight: 400;
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
+/* Cambia el color de los enlaces al pasar el mouse por encima */
+.navbar-nav .navbar-links:hover {
+  text-decoration: underline; /* Opcional: agrega subrayado al pasar el mouse */
+  color: #FFFFFF;
+}
+
+.navbar-nav .navbar-links:active {
+  color: #FFFFFF; /* Mantener el mismo color que el normal */
+}
+
+.navbar-collapse{
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.nav-login{
+  font-weight: 600;
+  font-size: 24px;
+  color: #FFFFFF;
+}
+
+@media (max-width: 1440px) {
+  .nav-item{
+    margin-right: 0px;
+  }
+  
+  .navbar-links{
+    font-size: 18px;
+  }
+
+  .navbar-brand.logo{
+    margin-right: 40px;
+  }
+
+  .navbar-nav {
+    gap: 20px;
+  }
+}
+
+
+@media (max-width: 991px) {
+  .navbar {
+    margin: 0 40px; /* Espacio de 80 px a la izquierda y derecha */
+
+  }
+
 }

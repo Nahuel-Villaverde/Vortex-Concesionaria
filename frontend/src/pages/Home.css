@@ -396,6 +396,7 @@ p, h1, h2, h3, h4, h5, h6, span {
   height: 110px;
   font-size: 15px;
   font-weight: 550;
+  color: #919191;
 }
 
 .person{
@@ -412,6 +413,7 @@ p, h1, h2, h3, h4, h5, h6, span {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  color: #FFFFFF;
 }
 
 .person-left-part h4{
@@ -456,6 +458,10 @@ footer{
   width: 430px;
 }
 
+.info h3{
+  color: #FFFFFF;
+}
+
 .hours{
   width: 310px;
 }
@@ -464,11 +470,13 @@ footer{
   font-size: 24px;
   font-weight: 700;
   font-style: italic;
+  color: #FFFFFF;
 }
 
 .days span{
   color: #919191;
   font-size: 15px;
+  
 }
 
 .newsletter{
@@ -486,6 +494,10 @@ footer{
   align-items: center;
   gap: 20px;
   margin-top: 16px;
+}
+
+.red span{
+  color: #FFFFFF;
 }
 
 .red img{
@@ -545,6 +557,7 @@ footer{
   font-size: 24px;
   font-weight: 700;
   font-style: italic;
+  color: #FFFFFF;
 }
 
 .newsletter-title p{

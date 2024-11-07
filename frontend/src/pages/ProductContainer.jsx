@@ -111,7 +111,7 @@ const ProductContainer = () => {
       <div className="filter-container">
 
         <div className="sort-container">
-          <label htmlFor="sort">Ordenar por: </label>
+          <label className="label-sort" htmlFor="sort">Ordenar por: </label>
           <select id="sort" name="sort" value={sort} onChange={handleFilterChange}>
             <option value="">Ninguno</option>
             <option value="asc">Ascendente</option>

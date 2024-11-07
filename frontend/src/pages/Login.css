@@ -16,6 +16,10 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
+.login-box h2{
+    color: #FFFFFF;
+}
+
 .logo-login {
     margin-bottom: 20px;
     display: flex;

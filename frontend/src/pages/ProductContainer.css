@@ -7,6 +7,7 @@
     align-items: flex-start;
     gap: 10px;
     color: white;
+    margin-bottom: 72px;
   }
   
   .categories {
@@ -57,11 +58,16 @@
   }
 
   .add-product-button{
-    margin-bottom: 8px;
+    margin-bottom: 24px;
   }
   
   .add-product-button:hover{
     background-color: #4e4e4e;
     transition: background-color 0.2s ease;
     border-color: transparent;
+  }
+
+
+  .label-sort{
+    margin-right: 16px;
   }

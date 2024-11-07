@@ -30,11 +30,7 @@
     cursor: pointer;
   }
   
-  .product-details {
-    margin:0;
-    font-size: 18px;
-    font-weight: 700;
-  }
+
   
   .product-actions {
     display: flex;
@@ -120,4 +116,11 @@
   background-color: #4e4e4e;
   transition: background-color 0.2s ease;
   border-color: transparent;
+}
+
+.product-detail-card-price {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 0;
 }

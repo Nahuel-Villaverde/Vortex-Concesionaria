@@ -59,7 +59,7 @@ const Product = ({ product, user, handleDeleteProduct }) => {
           <h2 className="product-title" >
             {product.titulo}
           </h2>
-          <p className="product-details">${product.precio}</p>
+          <p className="product-detail-card-price">${product.precio}</p>
         </div>
 
         <p className="product-category">{product.categoria}</p>

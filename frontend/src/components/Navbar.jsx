@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useUser } from '../context/UserContext'; // Asegúrate de que esta ruta sea correcta
-import './Navbar.css'; // Asegúrate de incluir estilos si lo deseas
+import { useUser } from '../context/UserContext';
+import './Navbar.css';
 import logo from '/images/VortexLogo.png';
 import axios from 'axios';
 
@@ -11,27 +11,26 @@ const Navbar = () => {
 
     const handleLogout = async () => {
         try {
-            await axios.post('/api/sessions/logout'); // Asegúrate de que esta ruta sea correcta
+            await axios.post('/api/sessions/logout');
             navigate('/login');
-            refreshUser(); // Refresca el usuario después de cerrar sesión
-
+            refreshUser();
         } catch (error) {
             console.error('Error al cerrar sesión', error);
         }
     };
 
     const handleLogoClick = (e) => {
-        e.preventDefault(); // Evita el comportamiento predeterminado del enlace
-        navigate('/home'); // Navega hacia /home
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // Hace scroll hacia arriba de manera suave
+        e.preventDefault();
+        navigate('/home');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const handleScrollToSection = (sectionId) => {
         const section = document.querySelector(sectionId);
-        const navbarHeight = document.querySelector('.navbar').offsetHeight; // Altura del navbar
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
         if (section) {
             const sectionPosition = section.getBoundingClientRect().top + window.scrollY;
-            const offsetPosition = sectionPosition - navbarHeight - 100; // Restamos el navbar más un extra de 10px
+            const offsetPosition = sectionPosition - navbarHeight - 100;
             window.scrollTo({
                 top: offsetPosition,
                 behavior: 'smooth'
@@ -48,35 +47,36 @@ const Navbar = () => {
     };
 
     const handleProfile = () => {
-        navigate('/profile'); // Navega a la página de perfil
+        navigate('/profile');
     };
 
     return (
-        <nav className="navbar">
-            <div className="left-section">
-                <Link to="/home" className="logo" onClick={handleLogoClick}>
-                    <img src={logo} alt="Logo de Vortex" />
-                </Link>
-                <ul className="nav-links">
-                    <li><Link to="/products">Catalog</Link></li>
-                    <li><Link to="/home" onClick={() => handleScrollToSection('#about-us')}>About Us</Link></li>
-                    <li><Link to="/home" onClick={() => handleScrollToSection('#testimonials')}>Clients</Link></li>
+        <nav className="navbar navbar-expand-lg">
+            <Link to="/home" className="navbar-brand logo" onClick={handleLogoClick}>
+                <img className='img-navbar' src={logo} alt="Logo de Vortex" />
+            </Link>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav me-auto">
+                    <li className="nav-item"><Link to="/products" className="navbar-links">Catalog</Link></li>
+                    <li className="nav-item"><Link to="/home" className="navbar-links" onClick={() => handleScrollToSection('#about-us')}>About Us</Link></li>
+                    <li className="nav-item"><Link to="/home" className="navbar-links" onClick={() => handleScrollToSection('#testimonials')}>Clients</Link></li>
                 </ul>
-            </div>
-            <div className="login-link">
-                {user ? (
-                    <>
-                        <button className="profile-button" onClick={handleProfile}>Profile</button>
-                        
-                        <button onClick={handleLogout} className='nav-logout'>Logout</button>
-
-                        {user.role === 'user' && (
-                            <button className="view-cart-button" onClick={handleViewCart}>Ver Carrito</button>
-                        )}
-                    </>
-                ) : (
-                    <Link to="/login">Login</Link>
-                )}
+                <div className="navbar-nav ms-auto login-link">
+                    {user ? (
+                        <>
+                            <button className="profile-button" onClick={handleProfile}>Profile</button>
+                            <button onClick={handleLogout} className="profile-button">Logout</button>
+                            {user.role === 'user' && (
+                                <button className="profile-button" onClick={handleViewCart}>Ver Carrito</button>
+                            )}
+                        </>
+                    ) : (
+                        <Link to="/login" className="nav-login">Login</Link>
+                    )}
+                </div>
             </div>
         </nav>
     );

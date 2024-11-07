@@ -43,6 +43,7 @@ align-items: center;
 flex-direction: column;
   text-align: left;
   margin-bottom: 24px;
+  margin-top: 16px
 }
 
 .product-details h2 {
