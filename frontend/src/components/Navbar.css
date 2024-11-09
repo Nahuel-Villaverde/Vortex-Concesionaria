@@ -192,8 +192,46 @@
 
 @media (max-width: 991px) {
   .navbar {
-    margin: 0 40px; /* Espacio de 80 px a la izquierda y derecha */
-
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-bottom: 30px;
   }
 
+  .navbar.navbar-expand-lg {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .login-link a{
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .login-link{
+    margin-top: 30px;
+  }
+
+  .navbar-nav{
+    text-align:center;
+    margin-top: 20px;
+  }
+
+  .nav-item{
+    color: white;
+    background-color: #1a1a1a;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+  }
+
+  .profile-button {
+    margin: 0px;
+
+}
+}
+
+@media (max-width: 514px) {
+  .navbar{
+    margin-bottom: 50px;
+  }
 }

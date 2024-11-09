@@ -90,7 +90,7 @@ const ProductDetail = () => {
     const imageUrl = `http://localhost:8080/uploads/${encodeURIComponent(product.thumbnail.split('/').pop())}`;
 
     return (
-        <div>
+        <div className='detail-mega-container'>
             <div className='detail-container'>
                 <img src={imageUrl} alt={product.titulo} />
 

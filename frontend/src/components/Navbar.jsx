@@ -50,6 +50,15 @@ const Navbar = () => {
         navigate('/profile');
     };
 
+    const handleClicktestimonials = () => {
+        navigate('/home'); // Primero navega a '/home'
+        handleScrollToSection('#testimonials'); // Luego hace scroll a la sección
+      };
+
+      const handleClickaboutus = () => {
+        navigate('/home'); // Primero navega a '/home'
+        handleScrollToSection('#about-us'); // Luego hace scroll a la sección
+      };
     return (
         <nav className="navbar navbar-expand-lg">
             <Link to="/home" className="navbar-brand logo" onClick={handleLogoClick}>
@@ -59,10 +68,10 @@ const Navbar = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav me-auto">
-                    <li className="nav-item"><Link to="/products" className="navbar-links">Catalog</Link></li>
-                    <li className="nav-item"><Link to="/home" className="navbar-links" onClick={() => handleScrollToSection('#about-us')}>About Us</Link></li>
-                    <li className="nav-item"><Link to="/home" className="navbar-links" onClick={() => handleScrollToSection('#testimonials')}>Clients</Link></li>
+                <ul className="navbar-nav">
+                    <li className="nav-item" onClick={() => navigate('/products')}><Link to="/products" className="navbar-links">Catalog</Link></li>
+                    <li className="nav-item" onClick={handleClickaboutus}><Link to="/home" className="navbar-links" onClick={() => handleScrollToSection('#about-us')}>About Us</Link></li>
+                    <li className="nav-item" onClick={handleClicktestimonials}><Link to="/home" className="navbar-links" onClick={() => handleScrollToSection('#testimonials')}>Clients</Link></li>
                 </ul>
                 <div className="navbar-nav ms-auto login-link">
                     {user ? (

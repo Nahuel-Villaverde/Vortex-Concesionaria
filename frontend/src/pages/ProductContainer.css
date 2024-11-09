@@ -71,3 +71,9 @@
   .label-sort{
     margin-right: 16px;
   }
+
+  @media (max-width: 991px) {
+    .mega-container{
+      margin: 0 40px;
+  }
+  }
