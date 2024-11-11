@@ -125,3 +125,39 @@ h2 {
     justify-content: center;
     align-items: center;
 }
+
+@media (max-width: 514px) {
+    .login-box{
+        width: 300px;
+    }
+
+    .login-box h2{
+        font-size: 20px;
+    }
+
+    .signup-text {
+        font-size: 12px;
+    }
+
+    .login-form input{
+        font-size: 12px;
+    }
+
+    .login-button{
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .google-login-button{
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .google-login-button img{
+        width: 15px;
+    }
+
+    .forgot-password{
+        font-size: 12px;
+    }
+}

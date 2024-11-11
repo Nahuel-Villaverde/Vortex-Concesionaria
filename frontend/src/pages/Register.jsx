@@ -32,7 +32,7 @@ const Register = () => {
     return (
         <div className="register-container">
             <div className="register-box">
-                <h2>Create an account</h2>
+                <h2 className='register-title'>Create an account</h2>
                 <p className="login-link-container">
                     Already have an account? <a href="/login">Login</a>
                 </p>

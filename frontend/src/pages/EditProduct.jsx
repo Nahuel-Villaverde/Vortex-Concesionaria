@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import './EditProduct.css';
 
 const EditProduct = () => {
   const { id } = useParams(); // Obtener el ID del producto de la URL
@@ -24,7 +25,7 @@ const EditProduct = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     // Crear un FormData para manejar los archivos
     const formData = new FormData();
     formData.append('titulo', event.target.titulo.value);
@@ -66,26 +67,28 @@ const EditProduct = () => {
   }
 
   return (
-    <div>
-      <h2>Editar Producto</h2>
-      <form id="updateProductForm" onSubmit={handleSubmit} encType="multipart/form-data">
-        <input type="hidden" name="productId" value={product._id} />
-        <label htmlFor="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" defaultValue={product.titulo} required />
-        <label htmlFor="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion" defaultValue={product.descripcion} required></textarea>
-        <label htmlFor="precio">Precio:</label>
-        <input type="number" id="precio" name="precio" defaultValue={product.precio} required />
-        <label htmlFor="thumbnail">Thumbnail:</label>
-        <input type="file" id="thumbnail" name="thumbnail" />
-        <label htmlFor="categoria">Categoría:</label>
-        <input type="text" id="categoria" name="categoria" defaultValue={product.categoria} required />
-        <label htmlFor="code">Code:</label>
-        <input type="text" id="code" name="code" defaultValue={product.code} required />
-        <label htmlFor="stock">Stock:</label>
-        <input type="number" id="stock" name="stock" defaultValue={product.stock} required />
-        <button type="submit">Guardar Cambios</button>
-      </form>
+    <div className='create-product-mega-container'>
+      <div className='create-product-container'>
+        <h2>Editar Producto</h2>
+        <form className='form-create-product' id="updateProductForm" onSubmit={handleSubmit} encType="multipart/form-data">
+          <input type="hidden" name="productId" value={product._id} />
+          <label htmlFor="titulo">Título:</label>
+          <input type="text" id="titulo" name="titulo" defaultValue={product.titulo} required />
+          <label htmlFor="descripcion">Descripción:</label>
+          <textarea id="descripcion" name="descripcion" defaultValue={product.descripcion} required></textarea>
+          <label htmlFor="precio">Precio:</label>
+          <input type="number" id="precio" step="any" name="precio" defaultValue={product.precio} required />
+          <label htmlFor="thumbnail">Thumbnail:</label>
+          <input type="file" id="thumbnail" name="thumbnail" />
+          <label htmlFor="categoria">Categoría:</label>
+          <input type="text" id="categoria" name="categoria" defaultValue={product.categoria} required />
+          <label htmlFor="code">Code:</label>
+          <input type="text" id="code" name="code" defaultValue={product.code} required />
+          <label htmlFor="stock">Stock:</label>
+          <input type="number" id="stock" name="stock" defaultValue={product.stock} required />
+          <button className="button-create-product" type="submit">Guardar Cambios</button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -118,8 +118,8 @@ const ProductDetail = () => {
                     )}
                     {user && user.role === 'admin' && (
                         <div className="product-actions-detail">
-                            <button className="product-actions-modify" onClick={handleEditProduct}>Modificar Producto</button>
-                            <button className="product-actions-delete" onClick={handleDeleteProduct}>Eliminar Producto</button>
+                            <button className="product-actions-modify" onClick={handleEditProduct}>Modificar</button>
+                            <button className="product-actions-delete" onClick={handleDeleteProduct}>Eliminar</button>
                         </div>
                     )}
                 </div>

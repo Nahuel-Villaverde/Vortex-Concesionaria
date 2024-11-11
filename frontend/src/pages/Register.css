@@ -21,6 +21,10 @@ h2 {
     margin-bottom: 10px;
 }
 
+.register-title{
+    color: #fff;
+}
+
 .login-link-container {
     color: #7A7A7A;
     margin-bottom: 20px;
@@ -41,7 +45,7 @@ h2 {
 }
 
 .name-inputs .register-input {
-    width: 40%;
+    width: 48%;
 }
 
 .register-input {
@@ -62,4 +66,36 @@ h2 {
     padding: 15px;
     cursor: pointer;
     font-size: 16px;
+}
+
+@media (max-width: 514px) {
+    .register-title {
+        font-size: 20px;
+    }
+
+    .login-link-container{
+        font-size: 14px;
+    }
+
+    .name-inputs{
+        flex-direction: column;
+    }
+
+    .name-inputs .register-input{
+        font-size: 12px;
+        width: auto;
+    }
+
+    .register-box{
+        width: 300px;
+    }
+
+    .register-form input{
+        font-size: 12px;
+    }
+
+    .register-button{
+        font-size: 12px;
+        font-weight: 700;
+    }
 }

@@ -100,14 +100,34 @@
 @media (max-width: 1440px) {
     .detail-container {
         flex-direction: column;
-        height: 80vh;
+        height: auto;
+        padding-bottom: 100px;
+    }
 
+    .detail-container img {
+        margin-top: 24px;
     }
 
     .detail-text {
         margin-top: 24px;
         margin-left: 0;
 
+    }
+}
+
+@media (max-width: 910px) {
+    .detail-container img {
+        width: 450px;
+    }
+
+    .detail-text {
+        max-width: 450px;
+    }
+
+
+    .detail-description {
+
+        width: auto;
     }
 }
 
@@ -154,6 +174,14 @@
     .price-desc{
         font-size: 30px;
     }
+    
+    .product-actions-modify{
+        font-size: 12px;
+    }
+
+    .product-actions-delete{
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 514px) {
@@ -163,10 +191,7 @@
 
     .detail-container img {
         width: 250px;
-    }
-
-    .detail-text {
-        max-width: 250px;
+        margin: 0;
     }
 
     .detail-description {
@@ -192,4 +217,6 @@
     .stock-desc{
         font-size: 12px;
     }
+
+    
 }

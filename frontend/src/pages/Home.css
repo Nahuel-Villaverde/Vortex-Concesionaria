@@ -36,12 +36,12 @@ p, h1, h2, h3, h4, h5, h6, span {
 /* Para alinear la imagen grande con el texto */
 .image-grid {
   display: flex;
-  justify-content: space-between;
+  gap: 40px;
   align-items: flex-start; /* Alinea el contenido en la parte superior */ /* Espacio superior para separar del título */
 }
 
 .large-image img {
-  width: 560px;
+  width: 100%;
   height: auto;
   object-fit: cover; /* Para que la imagen no se deforme */
   margin-top: -140px; /* Mueve la imagen grande hacia arriba para alinearla con el título */
@@ -59,8 +59,8 @@ p, h1, h2, h3, h4, h5, h6, span {
 }
 
 .small-images img {
-  width: 350px;
-  height: 243px;
+  width: 100%;
+  min-width: 270px;
   object-fit: cover; /* Para mantener la proporción de la imagen */
   opacity: 1; /* Establece la opacidad inicial al 70% */
   transition: opacity 0.3s ease-in-out; /* Transición suave para el hover */
@@ -564,4 +564,49 @@ footer{
 .newsletter-title p{
   font-size: 15px;
   color: #919191;
+}
+
+@media (max-width: 1300px) {
+  .home-container h1{
+    font-size: 48px;
+  }
+
+  .image-grid{
+    gap: 20px;
+  }
+
+  .small-images{
+    gap: 20px;
+  }
+
+  .catalog h3{
+    font-size: 36px;
+    max-width: 220px;
+  }
+
+  .catalog p{
+    font-size: 12px;
+    max-width: 450px;
+  }
+
+  .catalog button{
+    font-size: 24px;
+  }
+
+  .cars img{
+    width: 230px;
+  }
+
+  .card-description{
+    width: 230px;
+  }
+
+  .card-description h5{
+    font-size: 16px;
+  }
+
+  .car-card-titles-title{
+    margin-right: 8px;
+  }
+
 }
