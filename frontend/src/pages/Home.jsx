@@ -34,6 +34,10 @@ const Home = () => {
             <img src="images/audiImage.png" alt="Audi" />
             <p className="image-text">Audi</p>
           </div>
+          <div className="image-container image-benz-out" onClick={handleClick}>
+            <img src="images/mercedezImage.png" alt="Mercedez-Benz" />
+            <p className="image-text">Mercedez-Benz</p>
+          </div>
         </div>
         <div className="large-image image-container" onClick={handleClick}>
           <img src="images/mercedezImage.png" alt="Mercedez-Benz" />
@@ -80,7 +84,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className='cars' onClick={handleClick}>
+          <div className='cars car-despawn' onClick={handleClick}>
             <img src="images/model s.png" alt="BMW serie 2 220i" />
             <div className='card-description'>
               <div className='car-card-titles'>
@@ -94,7 +98,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className='cars' onClick={handleClick}>
+          <div className='cars car-despawn' onClick={handleClick}>
             <img src="images/E class.png" alt="BMW serie 2 220i" />
             <div className='card-description'>
               <div className='car-card-titles'>

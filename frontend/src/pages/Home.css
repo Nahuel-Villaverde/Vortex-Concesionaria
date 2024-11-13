@@ -7,14 +7,25 @@
 }
 
 .home-container h1 {
-  font-size: 64px; /* Tamaño de 64 px */
-  font-weight: 600; /* Peso semibold */
-  color: #FFFFFF; /* Color del texto */
-  margin: 0; /* Elimina márgenes predeterminados */
+  font-size: 64px;
+  /* Tamaño de 64 px */
+  font-weight: 600;
+  /* Peso semibold */
+  color: #FFFFFF;
+  /* Color del texto */
+  margin: 0;
+  /* Elimina márgenes predeterminados */
   max-width: 611px;
 }
 
-p, h1, h2, h3, h4, h5, h6, span {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
   cursor: default;
 }
 
@@ -37,42 +48,56 @@ p, h1, h2, h3, h4, h5, h6, span {
 .image-grid {
   display: flex;
   gap: 40px;
-  align-items: flex-start; /* Alinea el contenido en la parte superior */ /* Espacio superior para separar del título */
+  align-items: flex-start;
+  /* Alinea el contenido en la parte superior */
+  /* Espacio superior para separar del título */
 }
 
 .large-image img {
   width: 100%;
   height: auto;
-  object-fit: cover; /* Para que la imagen no se deforme */
-  margin-top: -140px; /* Mueve la imagen grande hacia arriba para alinearla con el título */
-  opacity: 1; /* Establece la opacidad inicial al 70% */
-  transition: opacity 0.3s ease-in-out; /* Transición suave para el hover */
+  object-fit: cover;
+  /* Para que la imagen no se deforme */
+  margin-top: -140px;
+  /* Mueve la imagen grande hacia arriba para alinearla con el título */
+  opacity: 1;
+  /* Establece la opacidad inicial al 70% */
+  transition: opacity 0.3s ease-in-out;
+  /* Transición suave para el hover */
 }
 
 /* Imágenes pequeñas alineadas en fila (row) */
 .small-images {
   display: flex;
-  flex-direction: row; /* Mantiene las imágenes en fila (row) */
-  justify-content: flex-start; /* Alinea las imágenes pequeñas a la izquierda */
-  gap: 48px; /* Espacio entre las dos imágenes pequeñas */
-  align-self: flex-end; /* Alinea las imágenes pequeñas al borde inferior de la imagen grande */
+  flex-direction: row;
+  /* Mantiene las imágenes en fila (row) */
+  justify-content: flex-start;
+  /* Alinea las imágenes pequeñas a la izquierda */
+  gap: 48px;
+  /* Espacio entre las dos imágenes pequeñas */
+  align-self: flex-end;
+  /* Alinea las imágenes pequeñas al borde inferior de la imagen grande */
 }
 
 .small-images img {
   width: 100%;
   min-width: 270px;
-  object-fit: cover; /* Para mantener la proporción de la imagen */
-  opacity: 1; /* Establece la opacidad inicial al 70% */
-  transition: opacity 0.3s ease-in-out; /* Transición suave para el hover */
+  object-fit: cover;
+  /* Para mantener la proporción de la imagen */
+  opacity: 1;
+  /* Establece la opacidad inicial al 70% */
+  transition: opacity 0.3s ease-in-out;
+  /* Transición suave para el hover */
 }
 
 
-.small-images img:hover, .large-image img:hover {
+.small-images img:hover,
+.large-image img:hover {
   opacity: 0.6;
 }
 
 
-.catalog{
+.catalog {
   margin-top: 72px;
   padding-bottom: 120px;
   display: flex;
@@ -81,7 +106,7 @@ p, h1, h2, h3, h4, h5, h6, span {
   border-bottom: 1px solid #313131;
 }
 
-.catalog h3{
+.catalog h3 {
   margin: 0;
   font-size: 48px;
   font-weight: 600;
@@ -89,7 +114,7 @@ p, h1, h2, h3, h4, h5, h6, span {
   max-width: 280px;
 }
 
-.catalog p{
+.catalog p {
   margin: 0;
   font-size: 14px;
   font-weight: 600;
@@ -98,7 +123,7 @@ p, h1, h2, h3, h4, h5, h6, span {
   text-align: center;
 }
 
-.catalog button{
+.catalog button {
   width: 268px;
   background-color: #A10000;
   border-radius: 60px;
@@ -107,53 +132,53 @@ p, h1, h2, h3, h4, h5, h6, span {
   transition: 0.3s ease-in-out;
 }
 
-.catalog button:hover{
+.catalog button:hover {
   background-color: #850000;
 
 }
 
 
-.our-vehicles{
+.our-vehicles {
   margin-top: 120px;
   margin-bottom: 120px;
   border-bottom: 1px solid #313131;
   padding-bottom: 120px;
 }
 
-.our-vehicles-text{
+.our-vehicles-text {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 72px;
 }
 
-.our-vehicles-text h2{
+.our-vehicles-text h2 {
   font-size: 48px;
   font-weight: 600;
   color: #FFFFFF;
   margin: 0;
 }
 
-.our-vehicles-text p{
+.our-vehicles-text p {
   color: #e6e6e6;
 }
 
-.car-card-container{
+.car-card-container {
   display: flex;
   justify-content: space-between;
 }
 
-.cars{
+.cars {
   display: flex;
   flex-direction: column;
   cursor: pointer;
 }
 
-.cars img{
+.cars img {
   width: 270px;
 }
 
-.card-description{
+.card-description {
   width: 270px;
   background-color: #FFFFFF;
   border-bottom-left-radius: 20px;
@@ -161,12 +186,12 @@ p, h1, h2, h3, h4, h5, h6, span {
   padding-bottom: 16px;
 }
 
-.car-card-titles{
+.car-card-titles {
   display: flex;
   justify-content: space-between;
 }
 
-.card-description h5{
+.card-description h5 {
   color: #040404;
   font-weight: 600;
   font-size: 20px;
@@ -176,7 +201,7 @@ p, h1, h2, h3, h4, h5, h6, span {
   margin-bottom: 0;
 }
 
-.card-description span{
+.card-description span {
   color: #757575;
   font-weight: 700;
   font-size: 12px;
@@ -184,7 +209,7 @@ p, h1, h2, h3, h4, h5, h6, span {
   margin-left: 16px;
 }
 
-.price-buy{
+.price-buy {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -192,14 +217,14 @@ p, h1, h2, h3, h4, h5, h6, span {
   margin-left: 16px;
 }
 
-.price-buy span{
+.price-buy span {
   color: #040404;
   font-weight: 600;
   font-size: 16px;
   margin: 0;
 }
 
-.price-buy button{
+.price-buy button {
   width: 100%;
   margin-right: 16px;
   background-color: transparent;
@@ -211,11 +236,11 @@ p, h1, h2, h3, h4, h5, h6, span {
   border-radius: 20px;
 }
 
-.price-buy button:hover{
+.price-buy button:hover {
   border-color: #ff0101;
 }
 
-.see-all{
+.see-all {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -233,27 +258,27 @@ p, h1, h2, h3, h4, h5, h6, span {
   transition: 0.3s ease-in-out;
 }
 
-.see-all:hover{
+.see-all:hover {
   background-color: #850000;
 }
 
-.about-us{
+.about-us {
   margin-top: 120px;
   margin-bottom: 120px;
   border-bottom: 1px solid #313131;
   padding-bottom: 120px;
 }
 
-.about-topside{
+.about-topside {
   display: flex;
   justify-content: space-between;
 }
 
-.about-us-text{
+.about-us-text {
   max-width: 600px;
 }
 
-.about-us-text h2{
+.about-us-text h2 {
   font-size: 48px;
   font-weight: 600;
   color: #FFFFFF;
@@ -261,45 +286,47 @@ p, h1, h2, h3, h4, h5, h6, span {
   margin-bottom: 16px;
 }
 
-.about-us-text p{
+.about-us-text p {
   font-size: 15px;
   color: #e6e6e6;
   font-weight: 500;
 }
 
-.years-experience, .vehicles-sold {
+.years-experience,
+.vehicles-sold {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 40px;
-  position: relative; 
+  position: relative;
 }
 
-.years-experience::before, .vehicles-sold::before {
+.years-experience::before,
+.vehicles-sold::before {
   content: "";
   position: absolute;
   left: 0;
   height: 70%;
   width: 4px;
-  background-color: #A10000; 
+  background-color: #A10000;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.numbers-verify{
+.numbers-verify {
   font-size: 48px;
   color: #FFFFFF;
   font-weight: 600;
 }
 
-.plus{
+.plus {
   color: #6F6F6F;
   font-size: 48px;
   font-weight: 600;
   padding-right: 72px;
 }
 
-.description-numbers{
+.description-numbers {
   font-size: 16px;
   color: #A10000;
   font-weight: 500;
@@ -316,7 +343,7 @@ p, h1, h2, h3, h4, h5, h6, span {
 .mini-medal {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
 }
@@ -330,7 +357,7 @@ p, h1, h2, h3, h4, h5, h6, span {
   color: #A10000;
   font-weight: 800;
   margin: 0;
-  height: 40px; 
+  height: 40px;
 }
 
 .mini-medal p {
@@ -343,27 +370,27 @@ p, h1, h2, h3, h4, h5, h6, span {
   margin-top: 0;
 }
 
-.testimonials{
+.testimonials {
   border-bottom: 1px solid #6F6F6F;
   margin-bottom: 72px;
   padding-bottom: 120px;
 }
 
-.title-testimonials{
+.title-testimonials {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.title-testimonials h6{
+.title-testimonials h6 {
   font-weight: 400;
   font-size: 16px;
   color: #919191;
   margin: 0;
 }
 
-.title-testimonials h2{
+.title-testimonials h2 {
   font-weight: 600;
   font-size: 48px;
   color: #FFFFFF;
@@ -372,7 +399,7 @@ p, h1, h2, h3, h4, h5, h6, span {
   margin-bottom: 8px;
 }
 
-.title-testimonials p{
+.title-testimonials p {
   font-weight: 400;
   font-size: 14px;
   color: #e6e6e6;
@@ -381,18 +408,18 @@ p, h1, h2, h3, h4, h5, h6, span {
   margin: 0;
 }
 
-.testimony-container{
+.testimony-container {
   display: flex;
   justify-content: space-between;
   align-items: self-start;
 }
 
-.testimony{
+.testimony {
   max-width: 550px;
   margin-top: 60px;
 }
 
-.testimony p{
+.testimony p {
   text-align: center;
   height: 110px;
   font-size: 15px;
@@ -400,96 +427,96 @@ p, h1, h2, h3, h4, h5, h6, span {
   color: #919191;
 }
 
-.person{
+.person {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.person img{
+.person img {
   width: 45px;
 }
 
-.person-left-part{
+.person-left-part {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   color: #FFFFFF;
 }
 
-.person-left-part h4{
+.person-left-part h4 {
   margin-left: 24px;
 }
 
-.person-left-part img{
+.person-left-part img {
   width: 64px;
 }
 
-footer{
+footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding-bottom: 72px;
 }
 
-.vortex-container{
+.vortex-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 16px;
 }
 
-.vortex-container h3{
+.vortex-container h3 {
   font-size: 24px;
   font-weight: 700;
   font-style: italic;
 }
 
-.vortex-container img{
+.vortex-container img {
   width: 63px;
 }
 
-.info p{
+.info p {
   max-width: 399px;
   font-size: 15px;
   color: #919191;
 }
 
-.info{
+.info {
   width: 430px;
 }
 
-.info h3{
+.info h3 {
   color: #FFFFFF;
 }
 
-.hours{
+.hours {
   width: 310px;
 }
 
-.hours h3{
+.hours h3 {
   font-size: 24px;
   font-weight: 700;
   font-style: italic;
   color: #FFFFFF;
 }
 
-.days span{
+.days span {
   color: #919191;
   font-size: 15px;
-  
+
 }
 
-.newsletter{
+.newsletter {
   width: 430px;
 }
 
 
-.redes{
+.redes {
   margin-top: 32px;
 }
 
-.red{
+.red {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -497,15 +524,15 @@ footer{
   margin-top: 16px;
 }
 
-.red span{
+.red span {
   color: #FFFFFF;
 }
 
-.red img{
+.red img {
   width: 19px;
 }
 
-.days{
+.days {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -524,15 +551,18 @@ footer{
   max-width: 400px;
   padding: 17px 10px 15px 24px;
   border: 1px solid #cccccc00;
-  border-radius: 30px; /* Bordes redondeados de 30px */
-  background-color: rgba(217, 217, 217, 0.1); /* Fondo D9D9D9 con 10% de opacidad */
+  border-radius: 30px;
+  /* Bordes redondeados de 30px */
+  background-color: rgba(217, 217, 217, 0.1);
+  /* Fondo D9D9D9 con 10% de opacidad */
   color: #ffffff;
   font-weight: 500;
   font-size: 15px;
 }
 
 .newsletter-input::placeholder {
-  color: #919191; /* Color del texto del placeholder */
+  color: #919191;
+  /* Color del texto del placeholder */
   font-weight: 500;
   font-size: 15px;
 }
@@ -554,59 +584,521 @@ footer{
   background-color: #850000;
 }
 
-.newsletter-title h3{
+.newsletter-title h3 {
   font-size: 24px;
   font-weight: 700;
   font-style: italic;
   color: #FFFFFF;
 }
 
-.newsletter-title p{
+.newsletter-title p {
   font-size: 15px;
   color: #919191;
 }
 
+.our-vehicles-text p {
+  margin: 0;
+}
+
+.image-benz-out {
+  display: none;
+}
+
 @media (max-width: 1300px) {
-  .home-container h1{
+  .home-container h1 {
     font-size: 48px;
   }
 
-  .image-grid{
+  .image-grid {
     gap: 20px;
   }
 
-  .small-images{
+  .small-images {
     gap: 20px;
   }
 
-  .catalog h3{
+  .catalog h3 {
     font-size: 36px;
     max-width: 220px;
   }
 
-  .catalog p{
+  .catalog p {
     font-size: 12px;
     max-width: 450px;
   }
 
-  .catalog button{
+  .catalog button {
     font-size: 24px;
   }
 
-  .cars img{
+  .cars img {
     width: 230px;
   }
 
-  .card-description{
+  .card-description {
     width: 230px;
   }
 
-  .card-description h5{
+  .card-description h5 {
     font-size: 16px;
   }
 
-  .car-card-titles-title{
+  .car-card-titles-title {
     margin-right: 8px;
   }
+
+  .testimony {
+    max-width: 450px;
+  }
+
+  .about-us-text {
+    max-width: 500px;
+  }
+
+}
+
+
+@media (max-width: 1100px) {
+  .info {
+    width: 250px;
+  }
+
+  .hours {
+    width: 210px;
+  }
+
+  .newsletter {
+    width: 230px;
+  }
+
+  .info p {
+    max-width: 399px;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
+  .red span {
+    font-size: 14px;
+  }
+
+  .days span {
+    font-size: 14px;
+  }
+
+  .newsletter-title p {
+    font-size: 12px;
+  }
+
+  .newsletter-btn {
+    margin-top: 8px;
+
+  }
+
+  .home-container h1 {
+    font-size: 36px;
+    max-width: 400px;
+  }
+
+  .large-image img {
+    min-width: 370px;
+  }
+
+  .small-images img {
+    min-width: 150px;
+  }
+
+  .large-image img {
+    margin-top: -100px;
+    min-width: 300px;
+  }
+
+  .catalog h3 {
+    font-size: 28px;
+    max-width: 220px;
+  }
+
+  .catalog p {
+    font-size: 10px;
+    max-width: 350px;
+  }
+
+  .catalog button {
+    width: 200px;
+    font-size: 20px;
+  }
+
+  .car-card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-items: center;
+  }
+
+  .testimony {
+    max-width: 350px;
+  }
+
+  .testimony p {
+    font-size: 12px;
+    height: 90px;
+  }
+
+  .person-left-part h4 {
+    font-size: 18px;
+  }
+
+  .person img {
+    width: 48px;
+  }
+
+  .about-us-text {
+    max-width: 380px;
+  }
+
+  .catalog h3 {
+    max-width: 160px;
+  }
+
+
+}
+
+@media (max-width: 970px) {
+  .home-container {
+    margin-right: 40px;
+    margin-left: 40px;
+  }
+
+  .about-us-text h2 {
+    font-size: 36px;
+  }
+
+  .about-us-text p {
+    font-size: 12px;
+  }
+
+  .numbers-verify {
+    font-size: 36px;
+  }
+
+  .plus {
+    font-size: 36px;
+  }
+
+  .description-numbers {
+    font-size: 14px;
+  }
+
+  .mini-medal img {
+    width: 50px;
+  }
+
+  .mini-medal h5 {
+    font-size: 16px;
+  }
+
+  .mini-medal p {
+    font-size: 12px;
+    max-width: 190px;
+  }
+}
+
+@media (max-width: 820px) {
+
+  .image-benz-out {
+    display: block;
+  }
+
+  .small-images {
+    flex-direction: column;
+  }
+
+  .image-grid {
+    flex-direction: column;
+  }
+
+  .large-image {
+    display: none;
+  }
+
+  .image-text {
+    position: relative;
+    font-size: 18px;
+    text-align: center;
+    bottom: 40px;
+  }
+
+  .image-container img {
+    max-height: 60px;
+    width: 100%;
+    border-radius: 25px;
+    opacity: 0.6;
+  }
+
+  .small-images {
+    align-self: center;
+    object-fit: none;
+    width: 100%;
+  }
+
+  .home-container h1 {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 80px;
+    margin-top: 80px;
+  }
+
+  .catalog {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .catalog h3 {
+    text-align: center;
+    max-width: none;
+  }
+
+  .catalog-button {
+    margin-top: 20px;
+  }
+
+  .our-vehicles-text p {
+    font-size: 12px;
+    width: 160px
+  }
+
+  .our-vehicles-text h2 {
+    font-size: 36px;
+  }
+
+  .about-us-text p {
+    font-size: 10px;
+    width: 270px;
+  }
+
+  .numbers-verify {
+    font-size: 20px;
+  }
+
+  .plus {
+    padding-right: 20px;
+    font-size: 20px;
+  }
+
+  .description-numbers {
+    font-size: 12px;
+  }
+
+  .years-experience,
+  .vehicles-sold {
+    padding-left: 20px;
+  }
+
+  .mini-medal h5 {
+    font-size: 14px;
+  }
+
+  .mini-medal p {
+    font-size: 10px;
+    max-width: 140px;
+  }
+
+  .title-testimonials h2 {
+    font-size: 40px;
+  }
+
+  .title-testimonials h6 {
+    font-size: 14px;
+  }
+
+  .title-testimonials p {
+    font-size: 12px;
+  }
+
+  .testimony p {
+    font-size: 8px;
+    max-width: 210px;
+  }
+
+  .person img {
+    width: 34px;
+  }
+
+  .person-left-part h4 {
+    font-size: 10px;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+
+  .info {
+    width: auto;
+  }
+
+  .hours {
+    width: auto;
+    margin-top: 25px;
+  }
+
+  .newsletter {
+    width: auto;
+    margin-top: 25px;
+  }
+
+  .info h3 {
+    margin: 0;
+  }
+
+  .newsletter-input {
+    max-width: none;
+  }
+
+  .car-despawn {
+    display: none;
+  }
+
+  .vortex-container h3 {
+    font-size: 18px;
+  }
+
+  .vortex-container img {
+    width: 43px;
+}
+
+.info p {
+  max-width: none;
+  font-size: 12px;
+}
+
+.red img {
+  width: 14px;
+}
+
+.red span {
+  font-size: 12px;
+}
+
+.hours h3 {
+  font-size: 18px;
+}
+
+.days span {
+  font-size: 12px;
+}
+
+.newsletter-title h3 {
+  font-size: 18px;
+}
+
+
+.newsletter-input {
+    padding: 17px 10px 15px 24px;
+    font-size: 12px;
+}
+
+}
+
+
+@media (max-width: 550px) {
+  .car-card-container {
+    display: flex;
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .our-vehicles-text h2 {
+    font-size: 28px;
+  }
+
+  .our-vehicles-text {
+    flex-direction: column;
+  }
+
+  .our-vehicles-text p {
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .numbers-verify {
+    font-size: 16px;
+  }
+
+  .plus {
+    font-size: 12px;
+    padding-right: 10px;
+  }
+
+  .description-numbers {
+    font-size: 10px;
+  }
+
+  .years-experience,
+  .vehicles-sold {
+    padding-left: 10px;
+  }
+
+  .about-us-text p {
+    font-size: 9px;
+    width: 220px;
+  }
+
+  .about-us-text h2 {
+    font-size: 34px;
+  }
+
+  .mini-medal img {
+    width: 30px;
+  }
+
+  .mini-medal h5 {
+    font-size: 10px;
+    height: 20px;
+  }
+
+  .mini-medal p {
+    font-size: 8px;
+    max-width: 100px;
+}
+
+.testimony-container {
+  align-items: center;
+  flex-direction: column;
+}
+
+}
+
+
+@media (max-width: 550px) {
+  .about-us-numbers{
+    width: max-content;
+  }
+
+  .about-topside {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+}
+
+.about-us-text p {
+  width: 100%;
+}
+
+.about-us-text h2 {
+  margin-top: 20px;
+}
+
+.medals {
+  align-items: center;
+  flex-direction: column;
+}
+
+.mini-medal p {
+  margin-bottom: 8px;
+  max-width: 200px;
+}
+
+
 
 }
