@@ -124,7 +124,6 @@ const ProductContainer = () => {
           <button className={`category-button ${categoria === 'coupes' ? 'active' : ''}`} onClick={() => handleFilterChange({ target: { name: 'categoria', value: 'coupes' } })}>COUPES</button>
           <button className={`category-button ${categoria === 'sedans' ? 'active' : ''}`} onClick={() => handleFilterChange({ target: { name: 'categoria', value: 'sedans' } })}>SEDANS</button>
           <button className={`category-button ${categoria === 'suvs' ? 'active' : ''}`} onClick={() => handleFilterChange({ target: { name: 'categoria', value: 'suvs' } })}>SUVS</button>
-          <button className={`category-button ${categoria === 'luxury' ? 'active' : ''}`} onClick={() => handleFilterChange({ target: { name: 'categoria', value: 'luxury' } })}>LUXURY</button>
         </div>
       </div>
 
