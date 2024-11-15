@@ -111,15 +111,15 @@ const ProductDetail = () => {
 
                     {/* Mostrar botones según el estado del usuario */}
                     {!user && (
-                        <button className="add-cart-desc" onClick={() => navigate('/login')}>Iniciar sesión para agregar al carrito</button>
+                        <button className="add-cart-desc" onClick={() => navigate('/login')}>Log in to add to cart</button>
                     )}
                     {user && user.role === 'user' && (
-                        <button className="add-cart-desc" onClick={handleAddToCart}>Agregar al Carrito</button>
+                        <button className="add-cart-desc" onClick={handleAddToCart}>Add to Cart</button>
                     )}
                     {user && user.role === 'admin' && (
                         <div className="product-actions-detail">
-                            <button className="product-actions-modify" onClick={handleEditProduct}>Modificar</button>
-                            <button className="product-actions-delete" onClick={handleDeleteProduct}>Eliminar</button>
+                            <button className="product-actions-modify" onClick={handleEditProduct}>Edit</button>
+                            <button className="product-actions-delete" onClick={handleDeleteProduct}>Delete</button>
                         </div>
                     )}
                 </div>

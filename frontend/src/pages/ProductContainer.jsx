@@ -104,18 +104,18 @@ const ProductContainer = () => {
     <div className='mega-container'>
       {user?.role === 'admin' && (
         <div>
-          <button className='add-product-button' onClick={handleAddProduct}>Agregar Producto</button>
+          <button className='add-product-button' onClick={handleAddProduct}>Add Product</button>
         </div>
       )}
 
       <div className="filter-container">
 
         <div className="sort-container">
-          <label className="label-sort" htmlFor="sort">Ordenar por: </label>
+          <label className="label-sort" htmlFor="sort">Sort by: </label>
           <select id="sort" name="sort" value={sort} onChange={handleFilterChange}>
-            <option value="">Ninguno</option>
-            <option value="asc">Ascendente</option>
-            <option value="desc">Descendente</option>
+            <option value="">None</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
           </select>
         </div>
 

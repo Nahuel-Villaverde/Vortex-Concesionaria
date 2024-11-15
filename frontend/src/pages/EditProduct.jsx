@@ -72,21 +72,21 @@ const EditProduct = () => {
         <h2>Editar Producto</h2>
         <form className='form-create-product' id="updateProductForm" onSubmit={handleSubmit} encType="multipart/form-data">
           <input type="hidden" name="productId" value={product._id} />
-          <label htmlFor="titulo">Título:</label>
+          <label htmlFor="titulo">Title:</label>
           <input type="text" id="titulo" name="titulo" defaultValue={product.titulo} required />
-          <label htmlFor="descripcion">Descripción:</label>
+          <label htmlFor="descripcion">Description:</label>
           <textarea id="descripcion" name="descripcion" defaultValue={product.descripcion} required></textarea>
-          <label htmlFor="precio">Precio:</label>
+          <label htmlFor="precio">Price:</label>
           <input type="number" id="precio" step="any" name="precio" defaultValue={product.precio} required />
           <label htmlFor="thumbnail">Thumbnail:</label>
           <input type="file" id="thumbnail" name="thumbnail" />
-          <label htmlFor="categoria">Categoría:</label>
+          <label htmlFor="categoria">Category:</label>
           <input type="text" id="categoria" name="categoria" defaultValue={product.categoria} required />
           <label htmlFor="code">Code:</label>
           <input type="text" id="code" name="code" defaultValue={product.code} required />
           <label htmlFor="stock">Stock:</label>
           <input type="number" id="stock" name="stock" defaultValue={product.stock} required />
-          <button className="button-create-product" type="submit">Guardar Cambios</button>
+          <button className="button-create-product" type="submit">Save Changes</button>
         </form>
       </div>
     </div>

@@ -70,11 +70,11 @@ const Product = ({ product, user, handleDeleteProduct }) => {
             <button className="modifiy-card" onClick={(e) => {
             e.stopPropagation(); // Evita que el click en el botón se propague al padre
             handleEditProduct();
-          }}>Modificar</button>
+          }}>Edit</button>
             <button className="delete-card" onClick={(e) => {
             e.stopPropagation();
             handleDeleteProduct(product._id);
-          }}>Eliminar</button>
+          }}>Delete</button>
           </div>
         )}
 

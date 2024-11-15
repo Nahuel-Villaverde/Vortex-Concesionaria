@@ -25,15 +25,15 @@ const UserProfile = () => {
   }
 
   if (!user) {
-    return <div>Cargando perfil...</div>;
+    return <div>Loading profile...</div>;
   }
 
   return (
     <div className='user-profile-container'>
-      <h1>Perfil del Usuario</h1>
-      <p>Nombre: {user.first_name}</p>
+      <h1>User Profile</h1>
+      <p>Name: {user.first_name}</p>
       <p>Email: {user.email}</p>
-      <p>Rol: {user.role}</p>
+      <p>Role: {user.role}</p>
     </div>
   );
 };

@@ -61,9 +61,9 @@ const CreateProduct = () => {
   return (
     <div className='create-product-mega-container'>
       <div className='create-product-container'>
-        <h2>Agregar Producto</h2>
+        <h2>Add Product</h2>
         <form className='form-create-product' onSubmit={handleSubmit}>
-          <label htmlFor="titulo">Título:</label>
+          <label htmlFor="titulo">Title:</label>
           <input
             type="text"
             id="titulo"
@@ -72,7 +72,7 @@ const CreateProduct = () => {
             onChange={handleChange}
             required
           />
-          <label htmlFor="descripcion">Descripción:</label>
+          <label htmlFor="descripcion">Description:</label>
           <textarea
             id="descripcion"
             name="descripcion"
@@ -80,7 +80,7 @@ const CreateProduct = () => {
             onChange={handleChange}
             required
           />
-          <label htmlFor="precio">Precio:</label>
+          <label htmlFor="precio">Price:</label>
           <input
             type="number"
             id="precio"
@@ -89,7 +89,7 @@ const CreateProduct = () => {
             onChange={handleChange}
             required
           />
-          <label htmlFor="categoria">Categoría:</label>
+          <label htmlFor="categoria">Category:</label>
           <input
             type="text"
             id="categoria"
@@ -98,7 +98,7 @@ const CreateProduct = () => {
             onChange={handleChange}
             required
           />
-          <label htmlFor="code">Código:</label>
+          <label htmlFor="code">Code:</label>
           <input
             type="text"
             id="code"
@@ -116,7 +116,7 @@ const CreateProduct = () => {
             onChange={handleChange}
             required
           />
-          <label htmlFor="thumbnail">Imagen (Thumbnail):</label>
+          <label htmlFor="thumbnail">Image (Thumbnail):</label>
           <input
             type="file"
             id="thumbnail"
@@ -124,7 +124,7 @@ const CreateProduct = () => {
             accept="image/*"
             onChange={handleThumbnailChange}
           />
-          <button className="button-create-product" type="submit">Agregar Producto</button>
+          <button className="button-create-product" type="submit">Add Product</button>
         </form>
         {error && <div>{error}</div>}
       </div>

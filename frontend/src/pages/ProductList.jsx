@@ -16,8 +16,8 @@ const ProductList = ({ products, user, handleDeleteProduct, handlePageChange, pr
       </div>
 
       <div className="pagination">
-        {prevLink && <button onClick={() => handlePageChange(prevLink)}>&lt;&lt; Anterior</button>}
-        {nextLink && <button onClick={() => handlePageChange(nextLink)}>Siguiente &gt;&gt;</button>}
+        {prevLink && <button onClick={() => handlePageChange(prevLink)}>&lt;&lt; Previous </button>}
+        {nextLink && <button onClick={() => handlePageChange(nextLink)}>Next &gt;&gt;</button>}
       </div>
     </div>
   );

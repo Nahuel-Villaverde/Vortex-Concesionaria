@@ -29,15 +29,15 @@ const TicketView = () => {
 
   return (
     <div className='TicketView-container'>
-      <h1>Compra finalizada</h1>
+      <h1>Purchase Completed</h1>
       <br />
-      <h2>Ticket de compra</h2>
-      <p>Código de ticket: {ticket.code}</p>
-      <p>Total a pagar: ${ticket.amount}</p>
-      <p>Comprador: {ticket.purchaser}</p>
+      <h2>Purchase Ticket</h2>
+      <p>Ticket Code: {ticket.code}</p>
+      <p>Total to pay: ${ticket.amount}</p>
+      <p>Buyer: {ticket.purchaser}</p>
       <br />
-      <h3>¡Gracias por su compra!</h3>
-      <p>Ha sido enviado un mail con el ticket</p>
+      <h3>Thank you for your purchase!</h3>
+      <p>An email with the receipt has been sent</p>
     </div>
   );
 };
