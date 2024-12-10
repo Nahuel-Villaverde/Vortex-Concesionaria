@@ -28,12 +28,11 @@ const MONGO_URL = process.env.MONGO_URL;
 // Configurar carpeta estática 'uploads'
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-const corsOptions = {
-  origin: 'https://vortex-concesionaria.vercel.app',  // La URL de tu frontend en Vercel
-  credentials: true,  // Si estás utilizando cookies o credenciales
-};
-
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: 'https://vortex-concesionaria.vercel.app', // Reemplaza con la URL de tu frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos que deseas permitir
+  credentials: true // Si estás manejando cookies o sesiones
+}));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
