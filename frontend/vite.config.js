@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:8080',
+      '/api': 'https://vortex-backend-06sc.onrender.com',
     },
   },
 })
