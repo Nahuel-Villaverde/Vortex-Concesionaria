@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
     resetPasswordExpires: Date
 });
 
+
 const User = mongoose.model(userCollection, userSchema);
 
 export default User;
