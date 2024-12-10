@@ -14,7 +14,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/sessions/login', { email, password });
+            const response = await axios.post('https://vortex-backend-06sc.onrender.com/api/sessions/login', { email, password });
             if (response.status === 200) {
                 refreshUser(); // Refresca el usuario
                 navigate('/products');
@@ -25,7 +25,7 @@ const Login = () => {
     };
 
     const handleGoogleLogin = () => {
-        window.location.href = '/api/sessions/google';
+        window.location.href = 'https://vortex-backend-06sc.onrender.com/api/sessions/google';
     };
 
     return (

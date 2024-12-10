@@ -30,7 +30,7 @@ const Product = ({ product, user, handleDeleteProduct }) => {
     }
 
     try {
-      const response = await axios.post(`/api/carts/${cartId}/products/${productId}`);
+      const response = await axios.post(`https://vortex-backend-06sc.onrender.com/api/carts/${cartId}/products/${productId}`);
       if (response.status === 200) {
         alert('Producto agregado al carrito con éxito');
       } else {
@@ -44,7 +44,7 @@ const Product = ({ product, user, handleDeleteProduct }) => {
 
   // Asegúrate de que product.thumbnail no contenga espacios
   console.log('Thumbnail:', product.thumbnail);
-  const imageUrl = `http://localhost:8080/uploads/${encodeURIComponent(product.thumbnail.split('/').pop())}`;
+  const imageUrl = `https://vortex-backend-06sc.onrender.com/uploads/${encodeURIComponent(product.thumbnail.split('/').pop())}`;
 
 
   return (

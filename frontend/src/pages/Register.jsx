@@ -20,7 +20,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/sessions/register', formData);
+            const response = await axios.post('https://vortex-backend-06sc.onrender.com/api/sessions/register', formData);
             if (response.status === 200) {
                 navigate('/login');
             }

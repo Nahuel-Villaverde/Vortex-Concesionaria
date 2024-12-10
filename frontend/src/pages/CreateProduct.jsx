@@ -43,7 +43,7 @@ const CreateProduct = () => {
     }
 
     try {
-      const response = await axios.post('/api/products', data, {
+      const response = await axios.post('https://vortex-backend-06sc.onrender.com/api/products', data, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       if (response.status === 200) {

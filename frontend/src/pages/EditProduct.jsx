@@ -12,7 +12,7 @@ const EditProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`/api/products/${id}`);
+        const response = await axios.get(`https://vortex-backend-06sc.onrender.com/api/products/${id}`);
         setProduct(response.data.payload); // Cambié a .payload si es que ese es el formato de respuesta
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -41,7 +41,7 @@ const EditProduct = () => {
     }
 
     try {
-      const response = await axios.put(`/api/products/${id}`, formData, {
+      const response = await axios.put(`https://vortex-backend-06sc.onrender.com/api/products/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

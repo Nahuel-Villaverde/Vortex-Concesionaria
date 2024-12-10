@@ -13,7 +13,7 @@ const ProductDetail = () => {
         // Fetch product data
         const fetchProduct = async () => {
             try {
-                const response = await axios.get(`/api/products/${id}`);
+                const response = await axios.get(`https://vortex-backend-06sc.onrender.com/api/products/${id}`);
                 console.log('Product Data:', response.data);
                 setProduct(response.data.payload); // Asigna los datos del producto al estado
             } catch (error) {
@@ -24,7 +24,7 @@ const ProductDetail = () => {
         // Fetch user data
         const fetchUser = async () => {
             try {
-                const response = await axios.get('/api/sessions/current_user');
+                const response = await axios.get('https://vortex-backend-06sc.onrender.com/api/sessions/current_user');
                 console.log('User Data:', response.data); // Revisa la estructura del objeto user
                 setUser(response.data); // Asigna los datos del usuario al estado
             } catch (error) {
@@ -49,7 +49,7 @@ const ProductDetail = () => {
         }
 
         try {
-            const response = await axios.post(`/api/carts/${user.cartId}/products/${product._id}`);
+            const response = await axios.post(`https://vortex-backend-06sc.onrender.com/api/carts/${user.cartId}/products/${product._id}`);
             if (response.status === 200) {
                 alert('Producto agregado al carrito con éxito');
             } else {
@@ -68,7 +68,7 @@ const ProductDetail = () => {
     const handleDeleteProduct = async () => {
         if (window.confirm('¿Estás seguro de que deseas eliminar este producto?')) {
             try {
-                const response = await axios.delete(`/api/products/${product._id}`);
+                const response = await axios.delete(`https://vortex-backend-06sc.onrender.com/api/products/${product._id}`);
                 if (response.status === 200) {
                     alert('Producto eliminado con éxito');
                     navigate('/products'); // Redirige a la lista de productos después de eliminar
@@ -87,7 +87,7 @@ const ProductDetail = () => {
         return <div>Loading...</div>; // Muestra un mensaje de carga mientras se obtienen los datos
     }
 
-    const imageUrl = `http://localhost:8080/uploads/${encodeURIComponent(product.thumbnail.split('/').pop())}`;
+    const imageUrl = `https://vortex-backend-06sc.onrender.com/uploads/${encodeURIComponent(product.thumbnail.split('/').pop())}`;
 
     return (
         <div className='detail-mega-container'>

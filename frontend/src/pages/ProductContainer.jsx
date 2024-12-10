@@ -28,7 +28,7 @@ const ProductContainer = () => {
         setNextLink(productsResponse.data.nextLink);
 
         try {
-          const userResponse = await axios.get('/api/sessions/current_user');
+          const userResponse = await axios.get('https://vortex-backend-06sc.onrender.com/api/sessions/current_user');
           setUser(userResponse.data);
         } catch (error) {
           setUser(null); // Usuario no autenticado
@@ -43,7 +43,7 @@ const ProductContainer = () => {
 
   const handleDeleteProduct = async (productId) => {
     try {
-      const response = await axios.delete(`/api/products/${productId}`);
+      const response = await axios.delete(`https://vortex-backend-06sc.onrender.com/api/products/${productId}`);
       if (response.status === 200) {
         // Actualizamos el estado de los productos eliminando el producto
         setProducts(products.filter((product) => product._id !== productId));
