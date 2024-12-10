@@ -22,7 +22,7 @@ const ProductContainer = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const productsResponse = await axios.get(`/api/products?page=${page}&limit=12&categoria=${categoria}&sort=${sort}`);
+        const productsResponse = await axios.get(`https://vortex-backend-06sc.onrender.com/api/products?page=${page}&limit=12&categoria=${categoria}&sort=${sort}`);
         setProducts(productsResponse.data.payload);
         setPrevLink(productsResponse.data.prevLink);
         setNextLink(productsResponse.data.nextLink);
