@@ -14,10 +14,11 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://vortex-backend-06sc.onrender.com/api/sessions/login', { email, password });
-            if (response.status === 200) {
-                refreshUser(); // Refresca el usuario
-                navigate('https://vortex-concesionaria.vercel.app/products');
+            const response = await axios.post('https://vortex-backend-06sc.onrender.com/api/sessions/login', { email, password }, { withCredentials: true });
+            
+            if (response.status === 200 && response.data.status === "success") {
+                refreshUser(); // Refresca el estado del usuario
+                navigate(response.data.redirectTo); // Redirige al frontend
             }
         } catch (error) {
             setError('Login fallido. Por favor, verifica tus credenciales.');

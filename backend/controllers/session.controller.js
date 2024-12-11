@@ -35,7 +35,9 @@ export const register = async (req, res, next) => {
 };
 
 export const login = (req, res) => {
-    if (!req.user) return res.status(401).send({ status: "error", error: "Credenciales inválidas" });
+    if (!req.user) {
+        return res.status(401).send({ status: "error", error: "Credenciales inválidas" });
+    }
     try {
         req.session.user = {
             first_name: req.user.first_name,
@@ -44,11 +46,12 @@ export const login = (req, res) => {
             age: req.user.age,
             role: req.user.role
         };
-        res.redirect('https://vortex-concesionaria.vercel.app/products');
+        res.status(200).send({ status: "success", redirectTo: 'https://vortex-concesionaria.vercel.app/products' });
     } catch (err) {
         res.status(500).send('Error al iniciar sesión');
     }
 };
+
 
 export const logout = (req, res) => {
     req.session.destroy((err) => {
