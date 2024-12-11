@@ -17,7 +17,7 @@ const Login = () => {
             const response = await axios.post('https://vortex-backend-06sc.onrender.com/api/sessions/login', { email, password });
             if (response.status === 200) {
                 refreshUser(); // Refresca el usuario
-                navigate('/products');
+                navigate('https://vortex-concesionaria.vercel.app/products');
             }
         } catch (error) {
             setError('Login fallido. Por favor, verifica tus credenciales.');
