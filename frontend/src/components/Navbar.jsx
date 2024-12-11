@@ -11,7 +11,7 @@ const Navbar = () => {
 
     const handleLogout = async () => {
         try {
-            await axios.post('/api/sessions/logout');
+            await axios.post('https://vortex-backend-06sc.onrender.com/api/sessions/logout');
             navigate('/login');
             refreshUser();
         } catch (error) {

@@ -45,7 +45,7 @@ app.use(session({
     mongoUrl: MONGO_URL,
   }),
   cookie: {
-    secure: false, // Cambia a `true` si usas HTTPS
+    secure: true, // Cambia a `true` si usas HTTPS
     httpOnly: true,
     sameSite: 'lax' // Ajusta según tus necesidades
   }
