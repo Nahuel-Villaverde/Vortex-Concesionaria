@@ -8,7 +8,9 @@ const ProtectedAuth = ({ requiredRole }) => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const response = await axios.get('/api/sessions/current_user');
+                const response = await axios.get('https://vortex-backend-06sc.onrender.com/api/sessions/current_user', {
+                    withCredentials: true,  // Importante para enviar cookies de sesión
+                });
                 setIsAuthenticated(true);
             } catch (error) {
                 setIsAuthenticated(false);
