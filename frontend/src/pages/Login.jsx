@@ -18,12 +18,13 @@ const Login = () => {
             
             if (response.status === 200 && response.data.status === "success") {
                 refreshUser(); // Refresca el estado del usuario
-                navigate(response.data.redirectTo); // Redirige al frontend
+                navigate('/products'); // Redirige directamente al frontend (sin necesidad de la URL completa)
             }
         } catch (error) {
             setError('Login fallido. Por favor, verifica tus credenciales.');
         }
     };
+    
 
     const handleGoogleLogin = () => {
         window.location.href = 'https://vortex-backend-06sc.onrender.com/api/sessions/google';

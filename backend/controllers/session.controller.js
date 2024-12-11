@@ -46,11 +46,12 @@ export const login = (req, res) => {
             age: req.user.age,
             role: req.user.role
         };
-        res.status(200).send({ status: "success", redirectTo: 'https://vortex-concesionaria.vercel.app/products' });
+        res.status(200).send({ status: "success" }); // Solo confirmamos el éxito, sin la URL de redirección
     } catch (err) {
         res.status(500).send('Error al iniciar sesión');
     }
 };
+
 
 
 export const logout = (req, res) => {
